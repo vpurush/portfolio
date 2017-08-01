@@ -3,7 +3,9 @@ var ReactDOM = require("react-dom");
 var Header = require('./header.jsx');
 var Footer = require('./footer.jsx');
 var $ = require("jquery");
+window.$ = $;
 var ProfessionalExperience = require('./professionalExperience.jsx');
+var TechnicalSkills = require('./technicalSkills.jsx');
 
 require('./app.scss');
 
@@ -18,18 +20,18 @@ class App extends React.Component{
     }
 
     render(){
-        var childComponent = [];
+        var childComponent = null;
 
         if(this.state.activeTab == 'ProfessionalExperience'){
-            childComponent = [<ProfessionalExperience></ProfessionalExperience>];            
+            childComponent = (<ProfessionalExperience></ProfessionalExperience>);
         }else if(this.state.activeTab == 'Education'){
-            childComponent = [<ProfessionalExperience></ProfessionalExperience>];
+            childComponent = (<ProfessionalExperience></ProfessionalExperience>);
         }else if(this.state.activeTab == 'TechnicalSkills'){
-            childComponent = [<ProfessionalExperience></ProfessionalExperience>];
+            childComponent = (<TechnicalSkills></TechnicalSkills>);
         }else if(this.state.activeTab == 'PersonalInfo'){
-            childComponent = [<ProfessionalExperience></ProfessionalExperience>];
+            childComponent = (<ProfessionalExperience></ProfessionalExperience>);
         }
-        
+
         return (
             <div className="app container-fluid">
                 <Header></Header>

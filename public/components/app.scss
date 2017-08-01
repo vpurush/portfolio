@@ -5,6 +5,7 @@
         overflow: hidden;
 
         .section-names{
+            color:white;
             display: flex;
             flex-wrap: nowrap;
             flex-direction: row;
@@ -25,6 +26,10 @@
             display: flex;
             height: calc(100% - 3em);
             align-items: center;
+
+            > div{
+                height: 100%;
+            }
         }
     }
 }

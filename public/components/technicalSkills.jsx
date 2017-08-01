@@ -1,0 +1,608 @@
+var React = require('react');
+var $ = require("jquery");
+var _ = require("lodash");
+
+require('./technicalSkills.scss');
+
+class TechnicalSkills extends React.Component{
+    constructor(props, context){
+        super(props, context);
+        this.state = {
+            skills: [
+                {
+                    //title: 'Javascript',
+                    title: 'Visual Studio',
+                    displayName: 'Javascript',
+                    description: 'More than 6 years of experience in advanced javascript',
+                    scale: 6
+                },
+                {
+                    //title: 'Knockout JS',
+                    title: 'Brackets',
+                    displayName: 'KnockoutJS',
+                    description: 'Around 3 years of experience in building UI using Knockout JS',
+                    scale: 3
+                },
+                {
+                    //title: 'Angular JS',
+                    title: 'IntelliJ',
+                    displayName: 'AngularJS',
+                    description: 'Around 3 years of experience in building UI using Angular JS 1.X',
+                    scale: 3
+                },
+                {
+                    //title: 'React JS',
+                    title: 'Atom',
+                    displayName: 'ReactJS',
+                    description: 'Trained myself in React. No work experience',
+                    scale: 3
+                },
+                {
+                    //title: 'Redux',
+                    title: 'Visual Studio Code',
+                    displayName: 'Redux',
+                    description: 'Trained myself in Redux. Have very good understanding. No work experience',
+                    scale: 3
+                },
+                {
+                    //title: '.NET Framework 4',
+                    title: 'Eclipse',
+                    displayName: '.NET Framework 4',
+                    description: 'Around 3 years of experience in building windows and web apps using .NET 4.0',
+                    scale: 3
+                },
+                {
+                    //title: 'ASP.NET MVC 3',
+                    title: 'Treehouse',
+                    displayName: 'ASP.NET MVC 3',
+                    description: 'Around 2 years of experience in building web applications using ASP.NET MVC 3',
+                    scale: 2
+                },
+                {
+                    //title: 'Jquery',
+                    title: 'Cloud.IO',
+                    displayName: 'Jquery',
+                    description: null,
+                    scale: 6
+                },
+                {
+                    //title: 'HTML 5',
+                    title: 'JS Fiddle',
+                    displayName: 'HTML 5',
+                    description: null,
+                    scale: 6
+                },
+                {
+                    //title: 'CSS 3',
+                    title: 'Webstorm',
+                    displayName: 'CSS 3',
+                    description: null,
+                    scale: 6
+                },
+                {
+                    //title: 'Bootstrap CSS',
+                    title: 'Plunker',
+                    displayName: 'Bootstrap CSS',
+                    description: null,
+                    scale: 4
+                },
+                {
+                    //title: 'SASS',
+                    title: 'Git Gist',
+                    displayName: 'SASS',
+                    description: null,
+                    scale: 3
+                },
+                {
+                    title: 'Gulp',
+                    displayName: 'Gulp',
+                    description: null,
+                    scale: 3
+                },
+                {
+                    title: 'Grunt',
+                    displayName: 'Grunt',
+                    description: null,
+                    scale: 3
+                }
+            ]
+        };
+    }
+
+    getClassNames(skill, i){
+        var classNames = "scale-" + skill.scale + " ";
+        var rBool = Math.random() < 0.7;
+        //if(i % 2 === 0){
+        if(rBool){
+            classNames += "horizontal";
+        }else{
+            classNames += "vertical";
+        }
+        return classNames;
+    }
+
+    render(){
+        return (
+            <div className="technical-skills">{
+                this.state.skills.map(function(s, i){
+                    return(
+                        <div key={i} className={"skill-item " + this.getClassNames(s, i)} data-scale={s.scale}>
+                            <div className="display-name">{s.displayName}</div>
+                        </div>
+                    )
+                }.bind(this))
+            }</div>
+        );        
+    }
+
+    savePosition(){
+
+    }
+
+    getOccupiedPixels(x, y, width, height, isVertical){
+        var output = {};
+        x = Math.round(x);
+        y = Math.round(y);
+        width = Math.round(width);
+        height = Math.round(height);
+        if(isVertical){
+            var newx = Math.round(x + width / 2 - height/2), newy = Math.round(y - width/2 + height/2);
+            if(newx < 0 || newy < 0){
+                console.log("negative values", newx, newy);
+            }
+            for(var j=0; j<width; j++){
+                var obj = {};
+                for(var i=0; i<height; i++){
+                    obj[i+newx] = true;
+                }
+                output[j+newy] = obj;
+            }
+
+        }else{
+            for(var j=0; j<height; j++){
+                var obj = {};
+                for(var i=0; i<width; i++){
+                    obj[i+x] = true;
+                }
+                output[y+j] = obj;
+            }
+        }
+        //console.log("getOccupiedPixels", output);
+        return output;
+    }
+
+    getOccupiedPixelsArray(x, y, width, height, isVertical, limit){
+        var output = new Array(limit.y, limit.x);
+        x = Math.round(x);
+        y = Math.round(y);
+        width = Math.round(width);
+        height = Math.round(height);
+        if(isVertical){
+            var newx = Math.round(x + width / 2 - height/2), newy = Math.round(y - width/2 + height/2);
+            if(newx < 0 || newy < 0){
+                console.log("negative values", newx, newy);
+            }
+            for(var j=0; j<width; j++){
+                for(var i=0; i<height; i++){
+                    output[j+newy][i+newx] = true;
+                }
+            }
+
+        }else{
+            for(var j=0; j<height; j++){
+                for(var i=0; i<width; i++){
+                    output[y+j][i+x] = true;
+                }
+            }
+        }
+        //console.log("getOccupiedPixels", output);
+        return output;
+    }
+
+    isThereAnOverlap(pos1, pos2){
+        //console.log("new call");
+        var isOverlap = false;
+        _.each(pos1, function(xvalues, yval){
+            if(yval % 2 == 0){
+                //console.log("isthereoverlap continue y");
+                //return true;                
+            }
+            _.each(xvalues, function(v, xval){
+                
+                if(xval % 2 == 0){
+                    //console.log("isthereoverlap continue x");
+                    //return true;                
+                }
+                if(pos2[yval] && pos2[yval][xval]){
+                    isOverlap = true;
+                }
+                if(isOverlap){
+                    //console.log("isthereoverlap x", isOverlap);
+                    return false;
+                }
+            });
+            if(isOverlap){
+                //console.log("isthereoverlap y", isOverlap);
+                return false;
+            }
+        })
+
+        //console.log("isoverlap", isOverlap);
+        return isOverlap;
+    }
+
+    isThereAnOverlapArray(pos1, pos2){
+        //console.log("new call");
+        var isOverlap = false;
+        for(var j=0; j<pos1.length; j++){
+            for(var i=0; i<pos1[j].length; i++){
+                if(pos2[yval] && pos2[yval][xval]){
+                    isOverlap = true;
+                }
+                if(isOverlap){
+                    //console.log("isthereoverlap x", isOverlap);
+                    return false;
+                }
+            }
+        }
+        _.each(pos1, function(xvalues, yval){
+            if(yval % 2 == 0){
+                //console.log("isthereoverlap continue y");
+                //return true;                
+            }
+            _.each(xvalues, function(v, xval){
+                
+                if(xval % 2 == 0){
+                    //console.log("isthereoverlap continue x");
+                    //return true;                
+                }
+                if(pos2[yval] && pos2[yval][xval]){
+                    isOverlap = true;
+                }
+                if(isOverlap){
+                    //console.log("isthereoverlap x", isOverlap);
+                    return false;
+                }
+            });
+            if(isOverlap){
+                //console.log("isthereoverlap y", isOverlap);
+                return false;
+            }
+        })
+
+        //console.log("isoverlap", isOverlap);
+        return isOverlap;
+    }
+
+    // getPositionWithinLimits(limit, height, width){
+    //     var center = {x: limit.x/2, y:limit.y/2};
+    //     var randomx = Math.ceil(Math.random() * 40 - 20);
+    //     var randomy = Math.ceil(Math.random() * 40 - 20);
+    //     var output;
+    //     var adjustment = 20;
+    //     output = {
+    //         x: center.x - adjustment * randomx,
+    //         y: center.y - adjustment * randomy
+    //     }
+    //     console.log("getPositionWithinLimits ", width, height, limit , output, randomx, randomy, output.x > 0 && output.y > 0 && ((output.x + width) < limit.x) && ((output.y + width) < limit.y));
+
+    //     if(output.x > 0 && output.y > 0 && ((output.x + width) < limit.x) && ((output.y + width) < limit.y)){
+    //         return output;
+    //     }else{
+    //         return this.getPositionWithinLimits(limit, height, width);
+    //     }
+    // }
+
+    getPositionWithinLimits(limit, height, width, itr, radius, side, isVertical, text){
+        var output;
+        var center = {x: limit.x/2, y:limit.y/2};
+        var radiusRange = radius.max - radius.min;
+        var radiusMultiplicationFactor = 1.2;
+
+        while(true){
+            itr++;
+            //var randomx, randomy;
+            var randomx = Math.ceil(Math.random() * radiusRange) + radius.min;
+            var randomy = Math.ceil(Math.random() * radiusRange * radiusMultiplicationFactor) + radius.min * radiusMultiplicationFactor;
+            // if(side == "t"){
+            //     randomx = Math.ceil(Math.random() * limit.x/2) 
+            //     randomx = randomx * (Math.random() < 0.5 ? -1 : 1);
+            //     randomy = Math.ceil(Math.random() * radiusRange) + radius.min;
+            //     randomy = randomy * -1;
+            // }else if(side == "r"){
+            //     randomy = Math.ceil(Math.random() * limit.y/2) 
+            //     randomy = randomy * (Math.random() < 0.5 ? -1 : 1);
+            //     randomx = Math.ceil(Math.random() * radiusRange * radiusMultiplicationFactor) + radius.min;
+            // }else if(side == "b"){
+            //     randomx = Math.ceil(Math.random() * limit.x/2) 
+            //     randomx = randomx *(Math.random() < 0.5 ? -1 : 1);
+            //     randomy = Math.ceil(Math.random() * radiusRange) + radius.min;
+            // }else if(side == "l"){
+            //     randomy = Math.ceil(Math.random() * limit.y/2) 
+            //     randomy = randomy * (Math.random() < 0.5 ? -1 : 1);
+            //     randomx = Math.ceil(Math.random() * radiusRange * radiusMultiplicationFactor) + radius.min;
+            //     randomx = randomx * -1;
+            // }
+            if(Math.random() > 0.5){
+                randomx = randomx * -1;
+            }
+            if(Math.random() > 0.5){
+                randomy = randomy * -1;
+            }
+            //var adjustment = 20;
+            output = {
+                x: center.x + randomx,
+                y: center.y + randomy
+            }
+            //console.log("getPositionWithinLimits ", side, center, radius, output);
+
+            if(isVertical){
+                if(output.x > 0 && output.y > 0 && ((output.x + height) < limit.x) && ((output.y + width) < limit.y)){
+                    //console.log("getPositionWithinLimits output", output, randomx, randomy, center);
+                    //return output;
+
+                    break;
+                }else{
+                    if(itr > 250){
+                        console.error("unable to find position within limits", side, output.y, limit.y, randomy, center.y, height, ((output.y + height) < limit.y));
+                        output = center;
+                        //output = null;
+                        break;
+                    }
+                    
+                    // else{
+                    //     return this.getPositionWithinLimits(limit, height, width, itr++, radius);
+                    // }
+                }
+            } else {
+                if(output.x > 0 && output.y > 0 && ((output.x + width) < limit.x) && ((output.y + height) < limit.y)){
+                    //console.log("getPositionWithinLimits output", output, randomx, randomy, center);
+                    //return output;
+
+                    break;
+                }else{
+                    if(itr > 250){
+                        console.error("unable to find position within limits", side, output.y, limit.y, randomy, center.y, height, ((output.y + height) < limit.y));
+                        output = center;
+                        //output = null;
+                        break;
+                    }
+                    
+                    // else{
+                    //     return this.getPositionWithinLimits(limit, height, width, itr++, radius);
+                    // }
+                }
+            }
+        }
+
+        //console.log("getPositionWithinLimits ", side, center, radius, output, randomx, randomy, text);
+        return output;
+    }
+
+    findPosition(elm, side, limit, positionsAlreadyOccupied, position, itr, radius){
+        //console.log("center", center);
+        var center = {x: limit.x/2, y:limit.y/2};
+        //var step = 2;
+        var radiusStep = 15;
+        var output;
+        //var adjustment = 20;
+        var height = $(elm).height();
+        var width = $(elm).width();
+        var text = $(elm).text();
+        var isVertical = $(elm).attr('class').indexOf('vertical') != -1;
+        radius = {
+            min: 0,
+            max: radiusStep
+        }
+
+        if(window.exit){
+            return center;
+        }
+
+        while(true){
+            position  = this.getPositionWithinLimits(limit, height, width, 0, radius, side, isVertical, text);
+            output = {x: position.x, y: position.y};
+            var occupiedPixels = this.getOccupiedPixels(position.x, position.y, width, height, isVertical, limit);
+            var isOverlap = false;
+
+            _.each(positionsAlreadyOccupied, function(pos){
+                isOverlap = this.isThereAnOverlap(occupiedPixels, pos);
+
+                if(isOverlap){
+                    return false;
+                }
+            }.bind(this));
+            //console.log("positionsAlreadyOccupied.length", positionsAlreadyOccupied.length);
+
+            occupiedPixels = null;
+            if(isOverlap){
+                // if(side == "left"){
+                //     if(isVertical){
+                //         if(position.x - step - height < 0){
+                //             position.x = center.x - height;
+                //             position.y = position.y - adjustment;
+                //         }else{
+                //             position.x = position.x - step;
+                //         }
+                //     }else{
+                //         if(position.x - step - width < 0){
+                //             position.x = center.x;
+                //             position.y = position.y - adjustment;
+                //         }else{
+                //             position.x = position.x - step;
+                //         }
+                //     }
+                //     //console.log("recursion");
+                //     output = this.findPosition(elm, side, limit, positionsAlreadyOccupied, position);
+                // }
+                // else if(side == "bottom"){
+                //     if(isVertical){
+                //         if(position.y + step + width > limit.y){
+                //             position.y = center.y;
+                //             position.x = position.x - adjustment;
+                //         }else{
+                //             position.y = position.y - step;
+                //         }
+                //     }else{
+                //         if(position.y + step + height > limit.y){
+                //             position.y = center.y;
+                //             position.x = position.x - adjustment;
+                //         }else{
+                //             position.y = position.y - step;
+                //         }
+                //     }
+                //     position.y = position.y - step;
+                //     //console.log("recursion");
+                //     output = this.findPosition(elm, side, limit, positionsAlreadyOccupied, position);
+                // }
+                // else if(side == "right"){
+                //     if(isVertical){
+                //         if(position.x + step + height > limit.x){
+                //             position.x = center.x;
+                //             position.y = position.y + adjustment;
+                //         }else{
+                //             position.x = position.x + step;
+                //         }
+                //     }else{
+                //         if(position.x + step + width > limit.x){
+                //             position.x = center.x;
+                //             position.y = position.y + adjustment;
+                //         }else{
+                //             position.x = position.x + step;
+                //         }
+                //     }
+                //     //console.log("recursion");
+                //     output = this.findPosition(elm, side, limit, positionsAlreadyOccupied, position);
+                // }
+                // else if(side == "top"){
+                //     if(isVertical){
+                //         if(position.y + step + width > limit.y){
+                //             position.y = center.y;
+                //             position.x = position.x + adjustment;
+                //         }else{
+                //             position.y = position.y + step;
+                //         }
+                //     }else{
+                //         if(position.y + step + height > limit.y){
+                //             position.y = center.y;
+                //             position.x = position.x + adjustment;
+                //         }else{
+                //             position.y = position.y + step;
+                //         }
+                //     }
+                    
+                //     //console.log("recursion");
+                //     output = this.findPosition(elm, side, limit, positionsAlreadyOccupied, position);
+                // }
+                //console.log("isoverlap ", true, itr, radius);
+
+                if(itr < 100){
+                    ++itr;
+                    continue;
+                }else{
+                    console.log("***********************  itr reset in findposition");
+                    itr = 0;
+                    radius = {
+                        min: radius.min + radiusStep,
+                        max: radius.max + radiusStep
+                    }
+
+                    if(radius.min > 500){
+                        console.log("returning center", text);
+                        return center;
+                    }
+                }
+                // if(!position){
+                //     if(side == "ul"){
+                //         side = "ur";
+                //     }else if(side == "ur"){
+                //         side = "br";                    
+                //     }else if(side == "br"){
+                //         side = "bl";
+                //     }else if(side == "bl"){
+                //         side = "ul";
+                //     }
+                // }
+                //output = this.findPosition(elm, side, limit, positionsAlreadyOccupied, position, ++itr, radius);
+            }else{
+                break;
+            }
+        }
+        //console.log("found position", output);
+        return output;
+    }
+
+    reposition(){
+        console.log($('.technical-skills').position());
+        var parentHeight = $('.technical-skills').height();
+        var parentWidth = $('.technical-skills').width();
+        //var step = 3;
+        var positionsAlreadyOccupied = [];
+        $('.technical-skills .skill-item').each(function(i, s){
+            console.log("i", i);
+
+            // if(i > 5){
+            //     return false;
+            // }
+            var isVertical = $(s).attr('class').indexOf('vertical') != -1;
+            var currentElementHeight = $(s).height();
+            var currentElementWidth = $(s).width();
+            var x, y;
+            if(i === 0){
+                x = parentWidth / 2 - currentElementWidth / 2;
+                y = parentHeight / 2 - currentElementHeight / 2;
+                $(s).css({top: y, left: x});
+            }else{
+                var pos;
+                if(i % 4 == 1){
+                    pos = this.findPosition(s, 
+                                                "t", 
+                                                {x: parentWidth, y:parentHeight}, 
+                                                positionsAlreadyOccupied, 
+                                                {x: parentWidth/2, y:parentHeight/2},
+                                                0,
+                                                null);
+                }else if(i % 4 == 2){
+                    pos = this.findPosition(s, 
+                                                "r", 
+                                                {x: parentWidth, y:parentHeight}, 
+                                                positionsAlreadyOccupied, 
+                                                {x: parentWidth/2, y:parentHeight/2},
+                                                0,
+                                                null);
+                }else if(i % 4 == 3){
+                    pos = this.findPosition(s, 
+                                                "b", 
+                                                {x: parentWidth, y:parentHeight}, 
+                                                positionsAlreadyOccupied, 
+                                                {x: parentWidth/2, y:parentHeight/2},
+                                                0,
+                                                null);
+                }else if(i % 4 == 0){
+                    pos = this.findPosition(s, 
+                                                "l", 
+                                                {x: parentWidth, y:parentHeight}, 
+                                                positionsAlreadyOccupied, 
+                                                {x: parentWidth/2, y:parentHeight/2},
+                                                0,
+                                                null);
+                }
+                x = pos.x;
+                y = pos.y;
+                $(s).css({top: pos.y, left: pos.x});
+                console.log("done", {top: pos.y, left: pos.x}, $(s).text());
+            }
+            positionsAlreadyOccupied.push(this.getOccupiedPixels(x, y, currentElementWidth, currentElementHeight, isVertical));
+        }.bind(this));
+    }
+
+    componentDidMount(){
+        this.reposition();
+    }
+
+    componentDidUpdate(){
+        this.reposition();
+    }
+}
+
+module.exports = TechnicalSkills;

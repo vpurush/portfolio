@@ -35,7 +35,7 @@ class ProfessionalExperience extends React.Component{
             <div className="professional-experience">{
                 this.state.experience.map(function(exp, i){
                     return(
-                        <div key={i} className="item">
+                        <div key={"prof-exp-" + i} className="item">
                             <div className="company">{exp.company}</div>
                             <div className="title">{exp.title}</div>
                             <div className="description">{exp.description}</div>
