@@ -1,7 +1,11 @@
 var React = require('react');
 var ReactDOM = require("react-dom");
+var Header = require('./header.jsx');
+var Footer = require('./footer.jsx');
 var $ = require("jquery");
 var ProfessionalExperience = require('./professionalExperience.jsx');
+
+require('./app.scss');
 
 class App extends React.Component{
 
@@ -14,32 +18,45 @@ class App extends React.Component{
     }
 
     render(){
-        var childComponent = (
-            <ProfessionalExperience></ProfessionalExperience>
-        );
+        var childComponent = [];
+
+        if(this.state.activeTab == 'ProfessionalExperience'){
+            childComponent = [<ProfessionalExperience></ProfessionalExperience>];            
+        }else if(this.state.activeTab == 'Education'){
+            childComponent = [<ProfessionalExperience></ProfessionalExperience>];
+        }else if(this.state.activeTab == 'TechnicalSkills'){
+            childComponent = [<ProfessionalExperience></ProfessionalExperience>];
+        }else if(this.state.activeTab == 'PersonalInfo'){
+            childComponent = [<ProfessionalExperience></ProfessionalExperience>];
+        }
+        
         return (
-            <div>
-                <div className="row">
-                    <div className="col-md-12 sections">
-                        <div className={`section ${this.state.activeTab == 'ProfessionalExperience' ? 'active' : ''}`} onClick={function(){ this.setState({activeTab: 'ProfessionalExperience'}); }.bind(this)}>
-                            Professional Experience
+            <div className="app container-fluid">
+                <Header></Header>
+                <div className="content">
+                    <div className="row">
+                        <div className="col-md-12 section-names">
+                            <div className={`section-name ${this.state.activeTab == 'ProfessionalExperience' ? 'active' : ''}`} onClick={function(){ this.setState({activeTab: 'ProfessionalExperience'}); }.bind(this)}>
+                                Professional Experience
+                            </div>
+                            <div className={`section-name ${this.state.activeTab == 'Education' ? 'active' : ''}`} onClick={function(){ this.setState({activeTab: 'Education'}); }.bind(this)}>
+                                Education
+                            </div>
+                            <div className={`section-name ${this.state.activeTab == 'TechnicalSkills' ? 'active' : ''}`} onClick={function(){ this.setState({activeTab: 'TechnicalSkills'}); }.bind(this)}>
+                                Technical Skills
+                            </div>
+                            <div className={`section-name ${this.state.activeTab == 'PersonalInfo' ? 'active' : ''}`} onClick={function(){ this.setState({activeTab: 'PersonalInfo'}); }.bind(this)}>
+                                Personal Info
+                            </div>
                         </div>
-                        <div className={`section ${this.state.activeTab == 'Education' ? 'active' : ''}`} onClick={function(){ this.setState({activeTab: 'Education'}); }.bind(this)}>
-                            Education
-                        </div>
-                        <div className={`section ${this.state.activeTab == 'TechnicalSkills' ? 'active' : ''}`} onClick={function(){ this.setState({activeTab: 'TechnicalSkills'}); }.bind(this)}>
-                            Technical Skills
-                        </div>
-                        <div className={`section ${this.state.activeTab == 'PersonalInfo' ? 'active' : ''}`} onClick={function(){ this.setState({activeTab: 'PersonalInfo'}); }.bind(this)}>
-                            Personal Info
+                    </div>
+                    <div className="row sections">
+                        <div className="col-md-12">
+                            {childComponent}
                         </div>
                     </div>
                 </div>
-                <div className="row">
-                    <div className="col-md-12 sections">
-                        {childComponent}
-                    </div>
-                </div>
+                <Footer></Footer>
             </div>
         );
     }

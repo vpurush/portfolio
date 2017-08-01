@@ -2,6 +2,7 @@
 
     display: flex;
     flex-direction: row;
+    justify-content: center;
     
     .item{
         flex: 0 1 auto;
@@ -15,8 +16,10 @@
             text-align: center;
         }
         .title{
+            color: dimgray;
+            font-style: italic;
             display: block;
-            font-size: 1.5em;
+            font-size: 1em;
             text-align: center;
         }
         .period{

@@ -19800,8 +19800,12 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var React = __webpack_require__(52);
 var ReactDOM = __webpack_require__(51);
+var Header = __webpack_require__(194);
+var Footer = __webpack_require__(197);
 var $ = __webpack_require__(50);
 var ProfessionalExperience = __webpack_require__(192);
+
+__webpack_require__(196);
 
 var App = function (_React$Component) {
     _inherits(App, _React$Component);
@@ -19819,57 +19823,74 @@ var App = function (_React$Component) {
     }
 
     _createClass(App, [{
-        key: "render",
+        key: 'render',
         value: function render() {
-            var childComponent = React.createElement(ProfessionalExperience, null);
+            var childComponent = [];
+
+            if (this.state.activeTab == 'ProfessionalExperience') {
+                childComponent = [React.createElement(ProfessionalExperience, null)];
+            } else if (this.state.activeTab == 'Education') {
+                childComponent = [React.createElement(ProfessionalExperience, null)];
+            } else if (this.state.activeTab == 'TechnicalSkills') {
+                childComponent = [React.createElement(ProfessionalExperience, null)];
+            } else if (this.state.activeTab == 'PersonalInfo') {
+                childComponent = [React.createElement(ProfessionalExperience, null)];
+            }
+
             return React.createElement(
-                "div",
-                null,
+                'div',
+                { className: 'app container-fluid' },
+                React.createElement(Header, null),
                 React.createElement(
-                    "div",
-                    { className: "row" },
+                    'div',
+                    { className: 'content' },
                     React.createElement(
-                        "div",
-                        { className: "col-md-12 sections" },
+                        'div',
+                        { className: 'row' },
                         React.createElement(
-                            "div",
-                            { className: "section " + (this.state.activeTab == 'ProfessionalExperience' ? 'active' : ''), onClick: function () {
-                                    this.setState({ activeTab: 'ProfessionalExperience' });
-                                }.bind(this) },
-                            "Professional Experience"
-                        ),
+                            'div',
+                            { className: 'col-md-12 section-names' },
+                            React.createElement(
+                                'div',
+                                { className: 'section-name ' + (this.state.activeTab == 'ProfessionalExperience' ? 'active' : ''), onClick: function () {
+                                        this.setState({ activeTab: 'ProfessionalExperience' });
+                                    }.bind(this) },
+                                'Professional Experience'
+                            ),
+                            React.createElement(
+                                'div',
+                                { className: 'section-name ' + (this.state.activeTab == 'Education' ? 'active' : ''), onClick: function () {
+                                        this.setState({ activeTab: 'Education' });
+                                    }.bind(this) },
+                                'Education'
+                            ),
+                            React.createElement(
+                                'div',
+                                { className: 'section-name ' + (this.state.activeTab == 'TechnicalSkills' ? 'active' : ''), onClick: function () {
+                                        this.setState({ activeTab: 'TechnicalSkills' });
+                                    }.bind(this) },
+                                'Technical Skills'
+                            ),
+                            React.createElement(
+                                'div',
+                                { className: 'section-name ' + (this.state.activeTab == 'PersonalInfo' ? 'active' : ''), onClick: function () {
+                                        this.setState({ activeTab: 'PersonalInfo' });
+                                    }.bind(this) },
+                                'Personal Info'
+                            )
+                        )
+                    ),
+                    React.createElement(
+                        'div',
+                        { className: 'row sections' },
                         React.createElement(
-                            "div",
-                            { className: "section " + (this.state.activeTab == 'Education' ? 'active' : ''), onClick: function () {
-                                    this.setState({ activeTab: 'Education' });
-                                }.bind(this) },
-                            "Education"
-                        ),
-                        React.createElement(
-                            "div",
-                            { className: "section " + (this.state.activeTab == 'TechnicalSkills' ? 'active' : ''), onClick: function () {
-                                    this.setState({ activeTab: 'TechnicalSkills' });
-                                }.bind(this) },
-                            "Technical Skills"
-                        ),
-                        React.createElement(
-                            "div",
-                            { className: "section " + (this.state.activeTab == 'PersonalInfo' ? 'active' : ''), onClick: function () {
-                                    this.setState({ activeTab: 'PersonalInfo' });
-                                }.bind(this) },
-                            "Personal Info"
+                            'div',
+                            { className: 'col-md-12' },
+                            childComponent
                         )
                     )
                 ),
-                React.createElement(
-                    "div",
-                    { className: "row" },
-                    React.createElement(
-                        "div",
-                        { className: "col-md-12 sections" },
-                        childComponent
-                    )
-                )
+                React.createElement(Footer, null)
             );
         }
     }]);
@@ -32416,28 +32437,28 @@ var $ = __webpack_require__(50);
 
 __webpack_require__(193);
 
-var App = function (_React$Component) {
-    _inherits(App, _React$Component);
+var ProfessionalExperience = function (_React$Component) {
+    _inherits(ProfessionalExperience, _React$Component);
 
-    function App(props, context) {
-        _classCallCheck(this, App);
+    function ProfessionalExperience(props, context) {
+        _classCallCheck(this, ProfessionalExperience);
 
-        var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props, context));
+        var _this = _possibleConstructorReturn(this, (ProfessionalExperience.__proto__ || Object.getPrototypeOf(ProfessionalExperience)).call(this, props, context));
 
         _this.state = {
             experience: [{
-                //company: 'Cognizant',
-                //title: 'Programmer analyst',
+                //  company: 'Cognizant',
+                //  title: 'Programmer analyst',
                 period: 'August 2008 – October 2010',
                 description: 'I was in charge of authentication and authorization for a ASP.NET MVC based web application created for a retailer in Europe. It is noteworthy that I got an opportunity to write very complex LINQ during the development of a batch processes using Microsoft Azure Queues.'
             }, {
-                //company: 'Cognizant',
-                //title: 'Associate',
+                //  company: 'Cognizant',
+                //  title: 'Associate',
                 period: 'November 2010 – December 2013',
                 description: 'I was part of the onsite team that closely worked with the client architects that created the beta version of the client facing news publishing application called “Content Submission” for one of the biggest stock exchanges in Europe. I was mostly involved in development using ASP.NET MVC & Knockout JS and at times was guiding the offshore team.'
             }, {
-                //company: 'Cognizant',
-                //title: 'Technology Specialist',
+                //  company: 'Cognizant',
+                //  title: 'Technology Specialist',
                 period: 'January 2014 – Present',
                 description: 'I am part of a team that develops the user interface for an internal application of one of the world\'s most famous smartphone maker. My responsibilities include understanding requirements, coming up with an implementation approach, getting the same approved by client architect, implementation (development), writing unit test cases, defect fixes and peer code review. On several occasions he also involves himself in requirement analysis to find incomplete/invalid requirements and to find implementation difficulties. The technologies that I\'m working on are Angular 1.5.x, Jquery, SASS (with Compass) and HTML5.'
             }]
@@ -32445,7 +32466,7 @@ var App = function (_React$Component) {
         return _this;
     }
 
-    _createClass(App, [{
+    _createClass(ProfessionalExperience, [{
         key: "render",
         value: function render() {
             return React.createElement(
@@ -32485,13 +32506,111 @@ var App = function (_React$Component) {
         }
     }]);
 
-    return App;
+    return ProfessionalExperience;
 }(React.Component);
 
-module.exports = App;
+module.exports = ProfessionalExperience;
 
 /***/ }),
 /* 193 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 194 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var React = __webpack_require__(52);
+
+__webpack_require__(195);
+
+var Header = function (_React$Component) {
+    _inherits(Header, _React$Component);
+
+    function Header() {
+        _classCallCheck(this, Header);
+
+        return _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).apply(this, arguments));
+    }
+
+    _createClass(Header, [{
+        key: 'render',
+        value: function render() {
+            return React.createElement('header', null);
+        }
+    }]);
+
+    return Header;
+}(React.Component);
+
+module.exports = Header;
+
+/***/ }),
+/* 195 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 196 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 197 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var React = __webpack_require__(52);
+
+__webpack_require__(198);
+
+var Footer = function (_React$Component) {
+    _inherits(Footer, _React$Component);
+
+    function Footer() {
+        _classCallCheck(this, Footer);
+
+        return _possibleConstructorReturn(this, (Footer.__proto__ || Object.getPrototypeOf(Footer)).apply(this, arguments));
+    }
+
+    _createClass(Footer, [{
+        key: 'render',
+        value: function render() {
+            return React.createElement('footer', null);
+        }
+    }]);
+
+    return Footer;
+}(React.Component);
+
+module.exports = Footer;
+
+/***/ }),
+/* 198 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

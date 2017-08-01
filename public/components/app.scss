@@ -1,16 +1,30 @@
-.sections{
-    display: flex;
-    flex-wrap: nowrap;
-    flex-direction: row;
-}
+.app{
 
-.section{
-    cursor: pointer;
-    flex: 0 1 auto;
-    margin: 10px 10px 10px 10px;
-    border-bottom: inset 2px tan;
+    .content{
+        height: calc(100vh - 6em);
+        overflow: hidden;
 
-    &.active{
-        border-bottom: inset 2px brown;
+        .section-names{
+            display: flex;
+            flex-wrap: nowrap;
+            flex-direction: row;
+        }
+
+        .section-name{
+            cursor: pointer;
+            flex: 0 1 auto;
+            margin: 10px 10px 10px 10px;
+            border-bottom: inset 2px tan;
+
+            &.active{
+                border-bottom: inset 2px brown;
+            }
+        }
+
+        .sections{
+            display: flex;
+            height: calc(100% - 3em);
+            align-items: center;
+        }
     }
 }

@@ -1,6 +1,13 @@
+header {
+  height: 3em;
+  width: 100%; }
+footer {
+  height: 3em;
+  width: 100%; }
 .professional-experience {
   display: flex;
-  flex-direction: row; }
+  flex-direction: row;
+  justify-content: center; }
   .professional-experience .item {
     flex: 0 1 auto;
     min-width: 300px;
@@ -11,8 +18,10 @@
       font-size: 2em;
       text-align: center; }
     .professional-experience .item .title {
+      color: dimgray;
+      font-style: italic;
       display: block;
-      font-size: 1.5em;
+      font-size: 1em;
       text-align: center; }
     .professional-experience .item .period {
       display: block;
@@ -26,6 +35,24 @@
       margin-bottom: 1em; }
     .professional-experience .item .company {
       display: block; }
+.app .content {
+  height: calc(100vh - 6em);
+  overflow: hidden; }
+  .app .content .section-names {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row; }
+  .app .content .section-name {
+    cursor: pointer;
+    flex: 0 1 auto;
+    margin: 10px 10px 10px 10px;
+    border-bottom: inset 2px tan; }
+    .app .content .section-name.active {
+      border-bottom: inset 2px brown; }
+  .app .content .sections {
+    display: flex;
+    height: calc(100% - 3em);
+    align-items: center; }
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
  * Copyright 2011-2016 Twitter, Inc.
@@ -6782,20 +6809,10 @@ button.close {
     display: none !important;
   }
 }
-.sections {
-  display: flex;
-  flex-wrap: nowrap;
-  flex-direction: row; }
-
-.section {
-  cursor: pointer;
-  flex: 0 1 auto;
-  margin: 10px 10px 10px 10px;
-  border-bottom: inset 2px tan; }
-  .section.active {
-    border-bottom: inset 2px brown; }
-
 a {
   color: red; }
+
+#root {
+  position: relative; }
 
 /*# sourceMappingURL=bundle.css.map*/
