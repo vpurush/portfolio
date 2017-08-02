@@ -111,28 +111,52 @@ class TechnicalSkills extends React.Component{
 
     getClassNames(skill, i){
         var classNames = "scale-" + skill.scale + " ";
-        var rBool = Math.random() < 0.7;
-        //if(i % 2 === 0){
-        if(rBool){
+        if(skill.isVertical === true){
+            classNames += "vertical";
+        }else if(skill.isVertical === false){
             classNames += "horizontal";
         }else{
-            classNames += "vertical";
+            var rBool = Math.random() < 0.7;
+            //if(i % 2 === 0){
+            if(rBool){
+                classNames += "horizontal";
+                skill.isVertical = false;
+            }else{
+                classNames += "vertical";
+                skill.isVertical = true;
+            }
         }
         return classNames;
     }
 
     render(){
-        return (
-            <div className="technical-skills">{
-                this.state.skills.map(function(s, i){
+        var content;
+        var techSkills = (
+            <div className="wrapper">
+                {this.state.skills.map(function(s, i){
                     return(
-                        <div key={i} className={"skill-item " + this.getClassNames(s, i)} data-scale={s.scale}>
+                        <div key={i} id={"skill-item-" + i} className={"skill-item " + this.getClassNames(s, i)} style={{top: s.top, left:s.left}} data-scale={s.scale}>
                             <div className="display-name">{s.displayName}</div>
                         </div>
                     )
-                }.bind(this))
-            }</div>
-        );        
+                }.bind(this))}
+            </div>);
+
+        if(this.state.repositionComplete){
+            content = (
+                <div className="technical-skills">{techSkills}</div>
+            );
+        }else{
+            content = (
+                <div className="technical-skills">
+                    {techSkills}
+                    <div className="technical-skill-refresh">
+                        <span className="glyphicon glyphicon-refresh"></span>
+                    </div>
+                </div>
+            );
+        }
+        return content;        
     }
 
     savePosition(){
@@ -172,7 +196,7 @@ class TechnicalSkills extends React.Component{
     }
 
     getOccupiedPixelsArray(x, y, width, height, isVertical, limit){
-        var output = new Array(limit.y, limit.x);
+        var output = new Array(limit.y);
         x = Math.round(x);
         y = Math.round(y);
         width = Math.round(width);
@@ -184,6 +208,9 @@ class TechnicalSkills extends React.Component{
             }
             for(var j=0; j<width; j++){
                 for(var i=0; i<height; i++){
+                    if(!output[j+newy]){
+                        output[j+newy] = new Array(limit.x);
+                    }
                     output[j+newy][i+newx] = true;
                 }
             }
@@ -191,6 +218,9 @@ class TechnicalSkills extends React.Component{
         }else{
             for(var j=0; j<height; j++){
                 for(var i=0; i<width; i++){
+                    if(!output[y+j]){
+                        output[y+j] = new Array(limit.x);
+                    }
                     output[y+j][i+x] = true;
                 }
             }
@@ -231,45 +261,40 @@ class TechnicalSkills extends React.Component{
         return isOverlap;
     }
 
-    isThereAnOverlapArray(pos1, pos2){
+    isThereAnOverlapArray(pos1, pos2, isVertical){
         //console.log("new call");
         var isOverlap = false;
-        for(var j=0; j<pos1.length; j++){
-            for(var i=0; i<pos1[j].length; i++){
-                if(pos2[yval] && pos2[yval][xval]){
-                    isOverlap = true;
+        if(isVertical){
+            var top = pos1.top + pos1.height / 2 - pos1.width / 2;
+            var left = pos1.left + pos1.width / 2 - pos1.height / 2;
+            for(var j=Math.round(top); j<top + pos1.width; j++){
+                for(var i=Math.round(left); i<left + pos1.height; i++){
+                    if(pos2[j] && pos2[j][i]){
+                        isOverlap = true;
+                    }
+                    if(isOverlap){
+                        break;
+                    }
                 }
                 if(isOverlap){
-                    //console.log("isthereoverlap x", isOverlap);
-                    return false;
+                    break;
+                }
+            }
+        }else{
+            for(var j=Math.round(pos1.top); j<pos1.top + pos1.height; j++){
+                for(var i=Math.round(pos1.left); i<pos1.left + pos1.width; i++){
+                    if(pos2[j] && pos2[j][i]){
+                        isOverlap = true;
+                    }
+                    if(isOverlap){
+                        break;
+                    }
+                }
+                if(isOverlap){
+                    break;
                 }
             }
         }
-        _.each(pos1, function(xvalues, yval){
-            if(yval % 2 == 0){
-                //console.log("isthereoverlap continue y");
-                //return true;                
-            }
-            _.each(xvalues, function(v, xval){
-                
-                if(xval % 2 == 0){
-                    //console.log("isthereoverlap continue x");
-                    //return true;                
-                }
-                if(pos2[yval] && pos2[yval][xval]){
-                    isOverlap = true;
-                }
-                if(isOverlap){
-                    //console.log("isthereoverlap x", isOverlap);
-                    return false;
-                }
-            });
-            if(isOverlap){
-                //console.log("isthereoverlap y", isOverlap);
-                return false;
-            }
-        })
-
         //console.log("isoverlap", isOverlap);
         return isOverlap;
     }
@@ -295,15 +320,16 @@ class TechnicalSkills extends React.Component{
 
     getPositionWithinLimits(limit, height, width, itr, radius, side, isVertical, text){
         var output;
+        var iterationLimit = 250;
         var center = {x: limit.x/2, y:limit.y/2};
         var radiusRange = radius.max - radius.min;
-        var radiusMultiplicationFactor = 1.2;
+        var radiusMultiplicationFactor = limit.x / limit.y;
 
         while(true){
             itr++;
             //var randomx, randomy;
-            var randomx = Math.ceil(Math.random() * radiusRange) + radius.min;
-            var randomy = Math.ceil(Math.random() * radiusRange * radiusMultiplicationFactor) + radius.min * radiusMultiplicationFactor;
+            var randomx = Math.ceil(Math.random() * radiusRange * radiusMultiplicationFactor) + radius.min * radiusMultiplicationFactor;
+            var randomy = Math.ceil(Math.random() * radiusRange) + radius.min;
             // if(side == "t"){
             //     randomx = Math.ceil(Math.random() * limit.x/2) 
             //     randomx = randomx * (Math.random() < 0.5 ? -1 : 1);
@@ -343,7 +369,7 @@ class TechnicalSkills extends React.Component{
 
                     break;
                 }else{
-                    if(itr > 250){
+                    if(itr > iterationLimit){
                         console.error("unable to find position within limits", side, output.y, limit.y, randomy, center.y, height, ((output.y + height) < limit.y));
                         output = center;
                         //output = null;
@@ -361,7 +387,7 @@ class TechnicalSkills extends React.Component{
 
                     break;
                 }else{
-                    if(itr > 250){
+                    if(itr > iterationLimit){
                         console.error("unable to find position within limits", side, output.y, limit.y, randomy, center.y, height, ((output.y + height) < limit.y));
                         output = center;
                         //output = null;
@@ -383,7 +409,7 @@ class TechnicalSkills extends React.Component{
         //console.log("center", center);
         var center = {x: limit.x/2, y:limit.y/2};
         //var step = 2;
-        var radiusStep = 15;
+        var radiusStep = 10;
         var output;
         //var adjustment = 20;
         var height = $(elm).height();
@@ -402,11 +428,18 @@ class TechnicalSkills extends React.Component{
         while(true){
             position  = this.getPositionWithinLimits(limit, height, width, 0, radius, side, isVertical, text);
             output = {x: position.x, y: position.y};
-            var occupiedPixels = this.getOccupiedPixels(position.x, position.y, width, height, isVertical, limit);
+            //var occupiedPixels = this.getOccupiedPixels(position.x, position.y, width, height, isVertical, limit);
             var isOverlap = false;
 
             _.each(positionsAlreadyOccupied, function(pos){
-                isOverlap = this.isThereAnOverlap(occupiedPixels, pos);
+                //isOverlap = this.isThereAnOverlap(occupiedPixels, pos);
+                isOverlap = this.isThereAnOverlapArray({
+                    top: position.y,
+                    left: position.x,
+                    width: width,
+                    height: height,
+                    isVertical
+                }, pos, isVertical);
 
                 if(isOverlap){
                     return false;
@@ -414,7 +447,7 @@ class TechnicalSkills extends React.Component{
             }.bind(this));
             //console.log("positionsAlreadyOccupied.length", positionsAlreadyOccupied.length);
 
-            occupiedPixels = null;
+            //occupiedPixels = null;
             if(isOverlap){
                 // if(side == "left"){
                 //     if(isVertical){
@@ -551,7 +584,9 @@ class TechnicalSkills extends React.Component{
             if(i === 0){
                 x = parentWidth / 2 - currentElementWidth / 2;
                 y = parentHeight / 2 - currentElementHeight / 2;
-                $(s).css({top: y, left: x});
+                $(s).css({top: y, left: x});                
+                this.state.skills[i].top = y + "px";
+                this.state.skills[i].left = x + "px";
             }else{
                 var pos;
                 if(i % 4 == 1){
@@ -591,17 +626,25 @@ class TechnicalSkills extends React.Component{
                 y = pos.y;
                 $(s).css({top: pos.y, left: pos.x});
                 console.log("done", {top: pos.y, left: pos.x}, $(s).text());
+                this.state.skills[i].top = pos.y + "px";
+                this.state.skills[i].left = pos.x + "px";
             }
-            positionsAlreadyOccupied.push(this.getOccupiedPixels(x, y, currentElementWidth, currentElementHeight, isVertical));
+            positionsAlreadyOccupied.push(this.getOccupiedPixelsArray(x, y, currentElementWidth, currentElementHeight, isVertical, {x: parentWidth, y:parentHeight}));
         }.bind(this));
+        
+        this.setState({
+            repositionComplete: true
+        })
+
+        console.log("reposition set to true");
     }
 
     componentDidMount(){
-        this.reposition();
+        setTimeout(this.reposition.bind(this), 500);
     }
 
     componentDidUpdate(){
-        this.reposition();
+        //setTimeout(this.reposition.bind(this), 500);
     }
 }
 
