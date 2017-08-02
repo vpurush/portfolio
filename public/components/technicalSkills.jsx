@@ -1,94 +1,85 @@
 var React = require('react');
 var $ = require("jquery");
 var _ = require("lodash");
+window.jQuery = $;
+var bootstrap = require("bootstrap");
 
 require('./technicalSkills.scss');
 
 class TechnicalSkills extends React.Component{
     constructor(props, context){
-        super(props, context);
+        super(props, context);        
         this.state = {
+            colors: ['cornflowerblue', 'burlywood', 'darksalmon', 'deepskyblue', 'gold', 'hotpink', 'cadetblue', 'lightcoral', 'orchid', 'palevioletred', 'mediumseagreen', 'salmon', 'sandybrown', 'steelblue', 'tan', 'tomato'],
             skills: [
                 {
-                    //title: 'Javascript',
-                    title: 'Visual Studio',
+                    title: 'Javascript',
                     displayName: 'Javascript',
                     description: 'More than 6 years of experience in advanced javascript',
                     scale: 6
                 },
                 {
-                    //title: 'Knockout JS',
-                    title: 'Brackets',
+                    title: 'Knockout JS',
                     displayName: 'KnockoutJS',
                     description: 'Around 3 years of experience in building UI using Knockout JS',
                     scale: 3
                 },
                 {
-                    //title: 'Angular JS',
-                    title: 'IntelliJ',
+                    title: 'Angular JS',
                     displayName: 'AngularJS',
                     description: 'Around 3 years of experience in building UI using Angular JS 1.X',
                     scale: 3
                 },
                 {
-                    //title: 'React JS',
-                    title: 'Atom',
+                    title: 'React JS',
                     displayName: 'ReactJS',
-                    description: 'Trained myself in React. No work experience',
+                    description: 'Trained myself in React. No work experience, yet have excellent knowledge.',
                     scale: 3
                 },
                 {
-                    //title: 'Redux',
-                    title: 'Visual Studio Code',
+                    title: 'Redux',
                     displayName: 'Redux',
-                    description: 'Trained myself in Redux. Have very good understanding. No work experience',
+                    description: 'Trained myself in Redux. Have very good understanding. No work experience, yet have excellent knowledge and thorough understanding.',
                     scale: 3
                 },
                 {
-                    //title: '.NET Framework 4',
-                    title: 'Eclipse',
+                    title: '.NET Framework 4',
                     displayName: '.NET Framework 4',
                     description: 'Around 3 years of experience in building windows and web apps using .NET 4.0',
                     scale: 3
                 },
                 {
-                    //title: 'ASP.NET MVC 3',
-                    title: 'Treehouse',
+                    title: 'ASP.NET MVC 3',
                     displayName: 'ASP.NET MVC 3',
                     description: 'Around 2 years of experience in building web applications using ASP.NET MVC 3',
                     scale: 2
                 },
                 {
-                    //title: 'Jquery',
-                    title: 'Cloud.IO',
+                    title: 'Jquery',
                     displayName: 'Jquery',
                     description: null,
                     scale: 6
                 },
                 {
-                    //title: 'HTML 5',
-                    title: 'JS Fiddle',
+                    title: 'HTML 5',
                     displayName: 'HTML 5',
                     description: null,
                     scale: 6
                 },
                 {
-                    //title: 'CSS 3',
-                    title: 'Webstorm',
+                    title: 'CSS 3',
                     displayName: 'CSS 3',
                     description: null,
                     scale: 6
                 },
                 {
-                    //title: 'Bootstrap CSS',
-                    title: 'Plunker',
+                    title: 'Bootstrap CSS',
                     displayName: 'Bootstrap CSS',
                     description: null,
                     scale: 4
                 },
                 {
-                    //title: 'SASS',
-                    title: 'Git Gist',
+                    title: 'SASS',
                     displayName: 'SASS',
                     description: null,
                     scale: 3
@@ -96,17 +87,19 @@ class TechnicalSkills extends React.Component{
                 {
                     title: 'Gulp',
                     displayName: 'Gulp',
-                    description: null,
+                    description: 'Have created several kinds of tasks using grunt and gulp',
                     scale: 3
                 },
                 {
                     title: 'Grunt',
                     displayName: 'Grunt',
-                    description: null,
+                    description: 'Have created several kinds of tasks using grunt and gulp',
                     scale: 3
                 }
             ]
         };
+
+        this.regenerate = this.regenerate.bind(this);
     }
 
     getClassNames(skill, i){
@@ -116,7 +109,7 @@ class TechnicalSkills extends React.Component{
         }else if(skill.isVertical === false){
             classNames += "horizontal";
         }else{
-            var rBool = Math.random() < 0.7;
+            var rBool = Math.random() < 0.65;
             //if(i % 2 === 0){
             if(rBool){
                 classNames += "horizontal";
@@ -126,7 +119,25 @@ class TechnicalSkills extends React.Component{
                 skill.isVertical = true;
             }
         }
+
+        classNames += " " + this.getColor();
         return classNames;
+    }
+
+    initSkillElement(elm){
+        //$(elm).tooltip();
+        $(elm).popover({
+            trigger: 'hover'
+        });
+    }
+
+    getColor(){
+        if(!this.colorIterator){
+            this.colorIterator = Math.floor(Math.random() * this.state.colors.length);
+        }else if(this.colorIterator == this.state.colors.length){
+            this.colorIterator = 0;
+        }
+        return " " + this.state.colors[this.colorIterator++] + " ";
     }
 
     render(){
@@ -135,7 +146,7 @@ class TechnicalSkills extends React.Component{
             <div className="wrapper">
                 {this.state.skills.map(function(s, i){
                     return(
-                        <div key={i} id={"skill-item-" + i} className={"skill-item " + this.getClassNames(s, i)} style={{top: s.top, left:s.left}} data-scale={s.scale}>
+                        <div key={i} id={"skill-item-" + i} className={"skill-item " + this.getClassNames(s, i)} style={{top: s.top, left:s.left}} data-scale={s.scale} title={s.title} data-content={s.description} data-toggle="popover" data-placement="top" ref={this.initSkillElement}>
                             <div className="display-name">{s.displayName}</div>
                         </div>
                     )
@@ -144,11 +155,17 @@ class TechnicalSkills extends React.Component{
 
         if(this.state.repositionComplete){
             content = (
-                <div className="technical-skills">{techSkills}</div>
+                <div className="technical-skills">
+                    <div className="info">
+                        Move your mouse over the technologies to know more.
+                        <span className="glyphicon glyphicon-repeat" onClick={this.regenerate}></span>
+                    </div>
+                    {techSkills}
+                </div>
             );
         }else{
             content = (
-                <div className="technical-skills">
+                <div className="technical-skills">                    
                     {techSkills}
                     <div className="technical-skill-refresh">
                         <span className="glyphicon glyphicon-refresh"></span>
@@ -322,6 +339,7 @@ class TechnicalSkills extends React.Component{
         var output;
         var iterationLimit = 250;
         var center = {x: limit.x/2, y:limit.y/2};
+        center.x = center.x - limit.x * 0.07; //center adjustment since the cloud gets right aligned
         var radiusRange = radius.max - radius.min;
         var radiusMultiplicationFactor = limit.x / limit.y;
 
@@ -563,6 +581,17 @@ class TechnicalSkills extends React.Component{
         }
         //console.log("found position", output);
         return output;
+    }
+
+    regenerate(){
+        
+        this.setState({
+            repositionComplete: false
+        });
+        this.forceUpdate();
+
+        setTimeout(this.reposition.bind(this), 500);
+
     }
 
     reposition(){

@@ -2,14 +2,25 @@
     text-align: center;
     height: 100%;
 
+    .info{
+        height: 2em;
+
+        .glyphicon-repeat{
+            cursor: pointer;
+            padding-left: 10px;
+            color: cornflowerblue;
+        }
+    }
+
     .hide{
         display: none;
     }
 
     .wrapper{
-        height: 100%;
+        height: calc(100% - 2em);
         text-align: center;
         overflow: hidden;
+        position: relative;
     }
 
     .refresh{
@@ -18,36 +29,16 @@
         text-align: center;
         justify-content: center;
         height: 100%;
-
-        @keyframes spinner{
-            0%{
-                transform: rotate(0deg);
-            }
-            25%{
-                transform: rotate(90deg);
-            }
-            50%{
-                transform: rotate(180deg);
-            }
-            75%{
-                transform: rotate(270deg);
-            }
-            100%{
-                transform: rotate(360deg);
-            }
-        }
-
-        .glyphicon-refresh{
-            font-size: 2em;
-            animation-name: spinner;
-            animation-duration: 3s;
-            animation-iteration-count: infinite;
-        }
     }
 
     .skill-item{
         display: inline-block;
         position: absolute;
+        cursor: pointer;
+
+        &:hover{
+            filter: blur(3px);
+        }
 
         &.horizontal{
             &.scale-2{
@@ -128,6 +119,72 @@
             }
         }
     }
+
+
+    .cornflowerblue{
+        color: cornflowerblue;
+    }
+    
+    .burlywood{
+        color: burlywood;
+    }
+    
+    .darksalmon{
+        color: darksalmon;
+    }
+    
+    .deepskyblue{
+        color: deepskyblue;
+    }
+    
+    .gold{
+        color: gold;
+    }
+    
+    .hotpink{
+        color: hotpink;
+    }
+    
+    .lightcoral{
+        color: lightcoral;
+    }
+    
+    .orchid{
+        color: orchid;
+    }
+    
+    .palevioletred{
+        color: palevioletred;
+    }
+    
+    .salmon{
+        color: salmon;
+    }
+    
+    .sandybrown{
+        color: sandybrown;
+    }
+    
+    .steelblue{
+        color: steelblue;
+    }
+    
+    .tan{
+        color: tan;
+    }
+    
+    .tomato{
+        color: tomato;
+    }
+    
+    .cadetblue{
+        color: cadetblue;
+    }
+
+    .mediumseagreen{
+        color: mediumseagreen;
+    }
+
 }
 
 .technical-skill-refresh{
@@ -142,4 +199,29 @@
     flex-direction: column;
     text-align: center;
     justify-content: center;
+
+    @keyframes spinner{
+        0%{
+            transform: rotate(0deg);
+        }
+        25%{
+            transform: rotate(90deg);
+        }
+        50%{
+            transform: rotate(180deg);
+        }
+        75%{
+            transform: rotate(270deg);
+        }
+        100%{
+            transform: rotate(360deg);
+        }
+    }
+
+    .glyphicon-refresh{
+        font-size: 2em;
+        animation-name: spinner;
+        animation-duration: 3s;
+        animation-iteration-count: infinite;
+    }
 }

@@ -6,6 +6,8 @@ var $ = require("jquery");
 window.$ = $;
 var ProfessionalExperience = require('./professionalExperience.jsx');
 var TechnicalSkills = require('./technicalSkills.jsx');
+var Education = require('./education.jsx');
+var GunScope = require('../reusable/gun-scope.jsx');
 
 require('./app.scss');
 
@@ -25,11 +27,11 @@ class App extends React.Component{
         if(this.state.activeTab == 'ProfessionalExperience'){
             childComponent = (<ProfessionalExperience></ProfessionalExperience>);
         }else if(this.state.activeTab == 'Education'){
-            childComponent = (<ProfessionalExperience></ProfessionalExperience>);
+            childComponent = (<Education></Education>);
         }else if(this.state.activeTab == 'TechnicalSkills'){
             childComponent = (<TechnicalSkills></TechnicalSkills>);
         }else if(this.state.activeTab == 'PersonalInfo'){
-            childComponent = (<ProfessionalExperience></ProfessionalExperience>);
+            childComponent = (<GunScope></GunScope>);
         }
 
         return (
