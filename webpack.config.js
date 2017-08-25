@@ -22,7 +22,7 @@ const webpackConfig = {
     },
     module: {
         loaders: [
-            { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
+            { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/, query: { presets: ['react', 'react-hmre']} },
             { test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules/ },
             // { test: /\.scss$/, loaders: ['style-loader', 'css-loader', 'sass-loader']},
             // {
@@ -84,7 +84,7 @@ const webpackConfig = {
             },
             {
                 test: /\.(eot|svg|ttf|woff|woff2|otf)$/,
-                loader: 'file-loader?name=/font/[name].[ext]'
+                loader: 'url-loader?name=/public/dist/font/[name].[ext]'
             },
         ]
     },

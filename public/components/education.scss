@@ -155,3 +155,26 @@ svg.education{
     }
 
 }
+
+
+svg.education-new-svg{
+    width: 100%;
+    height: 100%;
+
+    .outline-path{
+        stroke-width: .1;
+    }
+
+    .text-path{
+        font-size: .3em;
+    }
+
+    .hs{
+        display: none;
+    }
+
+    .college{
+        transform: rotate(60deg);
+        transform-origin: 10% 10%;
+    }
+}

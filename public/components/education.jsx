@@ -154,8 +154,47 @@ class Education extends React.Component{
         </svg>);
     }
 
+    renderNewSVG(){
+
+        return (<svg className="education-new-svg" viewBox="0 0 230 100" preserveAspectRatio="xMidYMid meet">
+                    <g className="hs">
+                        <path className="base-path" id="hs-base-path" d="M30 30
+                                    q10 -10 20 0" stroke="white" fill="none">
+                        </path>
+                        <path className="outline-path" d="M30 32
+                                    q10 -10 20 0
+                                    l4 -4
+                                    q-14 -14 -28 0
+                                    z" stroke="black" fill="none">
+                        </path>
+
+                        <text className="text">
+                            <textPath xlinkHref="#hs-base-path" textAnchor="start" className="text-path">High School</textPath>
+                        </text>
+                    </g>
+                    <g className="college">
+                        <path className="base-path" id="hs-base-path" d="M30 30
+                                    q10 -10 20 0" stroke="white" fill="none">
+                        </path>
+                        <path className="outline-path" d="M30 32
+                                    q10 -10 20 0
+                                    l4 -4
+                                    q-14 -14 -28 0
+                                    z" stroke="black" fill="none">
+                        </path>
+
+                        <text className="text">
+                            <textPath xlinkHref="#hs-base-path" textAnchor="start" className="text-path">&nbsp;&nbsp;&nbsp;College</textPath>
+                        </text>
+                    </g>
+
+                    {/*<circle cx="30" cy="30" r="5" stroke-width=".5" fill="none" />*/}
+
+                </svg>);
+    }
+
     render(){
-        return this.rendersvg();
+        return this.renderNewSVG();
     }
 }
 
