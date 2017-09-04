@@ -1,180 +1,202 @@
-// .education{
+.education{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+
+    .education-list{
+        flex: 0 0 auto;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+        overflow: scroll;
+
+        .item{
+            flex: 0 0 auto;
+            height: 100%;
+            width: 100%;
+            //overflow: hidden;
+
+            display: flex;
+            flex-direction: row;
+
+            // background-repeat: no-repeat;
+            // background-position: center center;
+            // background-attachment: fixed;
+            // background-size: cover;
+            // will-change: transform;
+
+            // &.high-school{
+            //     background-image: url('../images/university.svg');
+            // }
+
+            // &.college{
+            //     background-image: url('../images/mortarboard.svg');
+            // }
+
+            .education-icon{
+                padding-left: 3em;
+                padding-right: 3em;
+                flex: 1 0 30%;
+                height: 100%;
+                background-repeat: no-repeat;
+                background-position: center center;
+                //background-attachment: fixed;
+                background-size: 70% 70%;
+                opacity: .7;
+
+                &.high-school{
+                    background-image: url('../images/university.svg');
+                }
+
+                &.college{
+                    background-image: url('../images/mortarboard.svg');
+                }
+                
+                &.certifications{
+                    background-image: url('../images/diploma.svg');
+                }
+            }
+
+            .education-details{
+                flex: 1 0 70%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-content: center;
+                align-items: center;
+                padding: 5em;
+
+                .name{
+                    flex: 0 0 auto;
+                    font-size: 1.5em;
+                    margin: 1em;
+                }
+
+                .description{
+                    flex: 0 0 auto;
+                }
+            }
+        }
+    }
+}
+
+
+// svg.education{
+
+//     width: 100%;
 //     height: 100%;
-//     display: flex;
-//     flex-direction: row;
 
-//     .education-list{
-//         flex: 1 0 40%;
-//         display: flex;
-//         justify-content: center;
-//         transition-property: all;
-//         transition-duration: 2s;
-//         align-content: center;
-//         align-items: center;
-//         height: 100%;
-//         padding: 5em;
-
-//         &.middle{
-//             flex-direction: column;
-//         }
-
-//         &.top{
-//             flex-direction: row;
-//         }
-//         .item{
-//             flex: 0 0 auto;
-//             transition-property: height;
-//             transition-duration: 2s;
-//             //height: 1.5em;
-//             overflow: hidden;
-
-//             .name{
-//                 font-size: 1.5em;
-//             }
-
-//             .description{
-//                 transition-property: top opacity;
-//                 transition-duration: 1s;
-//                 top: -4em;
-//                 position: relative;
-//                 //display: none;
-//             }
-
-//             &.active{
-//                 height: auto;
-//                 .description{
-//                     //display: block;
-//                     top: 0;
-//                 }
-//             }
-//         }
+//     .education-item{
+//         font-size: 30%;
+//         text-align: center;
 //     }
 
 //     .education-details{
-//         flex: 1 0 60%;
-//         display: flex;
-//         justify-content: center;
-//         align-content: center;
-//         align-items: center;
-//         padding: 5em;
+//         font-size: 20%;
+//         border: solid 1px lightgray;
+//         border-radius: 10px;
 //     }
+
+//     .hs-line{
+//         stroke: gray;
+//         stroke-width: 0.1;
+
+//         .hs-line-one{
+//             stroke: gray;
+//             stroke-dasharray: 30 30;
+//             stroke-dashoffset: 30;
+//             &.animate{
+//                 animation-name: hs-line-one-animation;
+//                 animation-duration: 2s;
+//                 animation-fill-mode: forwards;
+//             }
+//         }
+
+//         .hs-line-two{
+//             stroke: gray;
+//             stroke-dasharray: 40 40;
+//             stroke-dashoffset: 40;
+//             &.animate{
+//                 animation-delay: 1s;
+//                 animation-duration: 2s;
+//                 animation-name: hs-line-two-animation;
+//                 animation-fill-mode: forwards;
+//             }
+//         }
+
+//         .hs-line-three{
+//             stroke: gray;
+//             stroke-dasharray: 60 60;
+//             stroke-dashoffset: 60;
+
+//             &.animate{
+//                 animation-name: hs-line-three-animation;
+//                 animation-delay: 1s;
+//                 animation-duration: 2s;
+//                 animation-fill-mode: forwards;
+//             }
+//         }
+//     }
+
+//     @keyframes hs-line-one-animation{
+//         0%{
+//             stroke-dasharray: 30 30;
+//             stroke-dashoffset: 30;
+//         }
+
+//         100%{
+//             stroke-dasharray: 30 30;
+//             stroke-dashoffset: 0;
+//         }
+//     }
+
+//     @keyframes hs-line-two-animation{
+//         0%{
+//             stroke-dasharray: 40 40;
+//             stroke-dashoffset: 40;
+//         }
+
+//         100%{
+//             stroke-dasharray: 40 40;
+//             stroke-dashoffset: 0;
+//         }
+//     }
+
+//     @keyframes hs-line-three-animation{
+//         0%{
+//             stroke-dasharray: 60 60;
+//             stroke-dashoffset: 60;
+//         }
+
+//         100%{
+//             stroke-dasharray: 60 60;
+//             stroke-dashoffset: 0;
+//         }
+//     }
+
 // }
 
 
-svg.education{
+// svg.education-new-svg{
+//     width: 100%;
+//     height: 100%;
 
-    width: 100%;
-    height: 100%;
+//     .outline-path{
+//         stroke-width: .1;
+//     }
 
-    .education-item{
-        font-size: 30%;
-        text-align: center;
-    }
+//     .text-path{
+//         font-size: .3em;
+//     }
 
-    .education-details{
-        font-size: 20%;
-        border: solid 1px lightgray;
-        border-radius: 10px;
-    }
+//     .hs{
+//         display: none;
+//     }
 
-    .hs-line{
-        stroke: gray;
-        stroke-width: 0.1;
-
-        .hs-line-one{
-            stroke: gray;
-            stroke-dasharray: 30 30;
-            stroke-dashoffset: 30;
-            &.animate{
-                animation-name: hs-line-one-animation;
-                animation-duration: 2s;
-                animation-fill-mode: forwards;
-            }
-        }
-
-        .hs-line-two{
-            stroke: gray;
-            stroke-dasharray: 40 40;
-            stroke-dashoffset: 40;
-            &.animate{
-                animation-delay: 1s;
-                animation-duration: 2s;
-                animation-name: hs-line-two-animation;
-                animation-fill-mode: forwards;
-            }
-        }
-
-        .hs-line-three{
-            stroke: gray;
-            stroke-dasharray: 60 60;
-            stroke-dashoffset: 60;
-
-            &.animate{
-                animation-name: hs-line-three-animation;
-                animation-delay: 1s;
-                animation-duration: 2s;
-                animation-fill-mode: forwards;
-            }
-        }
-    }
-
-    @keyframes hs-line-one-animation{
-        0%{
-            stroke-dasharray: 30 30;
-            stroke-dashoffset: 30;
-        }
-
-        100%{
-            stroke-dasharray: 30 30;
-            stroke-dashoffset: 0;
-        }
-    }
-
-    @keyframes hs-line-two-animation{
-        0%{
-            stroke-dasharray: 40 40;
-            stroke-dashoffset: 40;
-        }
-
-        100%{
-            stroke-dasharray: 40 40;
-            stroke-dashoffset: 0;
-        }
-    }
-
-    @keyframes hs-line-three-animation{
-        0%{
-            stroke-dasharray: 60 60;
-            stroke-dashoffset: 60;
-        }
-
-        100%{
-            stroke-dasharray: 60 60;
-            stroke-dashoffset: 0;
-        }
-    }
-
-}
-
-
-svg.education-new-svg{
-    width: 100%;
-    height: 100%;
-
-    .outline-path{
-        stroke-width: .1;
-    }
-
-    .text-path{
-        font-size: .3em;
-    }
-
-    .hs{
-        display: none;
-    }
-
-    .college{
-        transform: rotate(60deg);
-        transform-origin: 10% 10%;
-    }
-}
+//     .college{
+//         transform: rotate(60deg);
+//         transform-origin: 10% 10%;
+//     }
+// }

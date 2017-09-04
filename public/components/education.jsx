@@ -8,7 +8,7 @@ class Education extends React.Component{
     constructor(props, context){
         super(props, context);
         this.state = {
-            selectedEducationItem: 'high-school'
+            //selectedEducationItem: 'high-school'
         };
         this.itemClick = this.itemClick.bind(this);
     }
@@ -44,15 +44,36 @@ class Education extends React.Component{
         return (
             <div className="education">
                 <div className={"education-list " + educationListPosition}>
-                    <div className={"item " + (this.state.selectedEducationItem == 'high-school' ? "active" : "")} onClick={this.itemClick('high-school')}>
-                        <span className="name">High School</span>
+                    <div className="item high-school">
+                        <div className="education-icon high-school">
+                        </div>
+                        <div className="education-details">
+                            <div className="name">High School</div>
+                            <div className="description">Finished my high school at Sri Krishnaswamy matriculation higher secondary school at Chennai in India. Graduated in first class with distinction scoring 89%. Took part in various extracurricular activities such as karate, running and culturals.</div>
+                        </div>
                     </div>
-                    <div className={"item " + (this.state.selectedEducationItem == 'college' ? "active" : "")} onClick={this.itemClick('college')}>
+                    <div className="item college">
+                        <div className="education-icon college">
+                        </div>
+                        <div className="education-details">
+                            <div className="name">College</div>
+                            <div className="description">Graduated from SSN College of Engineering as an Electronics and Communication engineer in first class with distinction. Took part in various extracurricular activities such as conducting events in symposiums, participating in symposiums in other colleges.</div>
+                        </div>
+                    </div>
+                    <div className="item certifications">
+                        <div className="education-icon certifications">
+                        </div>
+                        <div className="education-details">
+                            <div className="name">Certifications</div>
+                            <div className="description">Have got myself certified in several areas such as secure coding practices, Machine Learning, HTML5, CSS3 and Javascript, web application development with .NET framework 4 </div>
+                        </div>
+                    </div>
+                    {/* <div className={"item " + (this.state.selectedEducationItem == 'college' ? "active" : "")} onClick={this.itemClick('college')}>
                         <span className="name">College</span>
                     </div>
                     <div className={"item " + (this.state.selectedEducationItem == 'certifications' ? "active" : "")} onClick={this.itemClick('certifications')}>
                         <span className="name">Certifications</span>
-                    </div>
+                    </div> */}
                 </div>
                 {educationDetails}
                 {/*<svg viewBox="0 0 500 500">
@@ -187,6 +208,11 @@ class Education extends React.Component{
                             <textPath xlinkHref="#hs-base-path" textAnchor="start" className="text-path">&nbsp;&nbsp;&nbsp;College</textPath>
                         </text>
                     </g>
+                    <foreignObject x="120" y="40" width="80" height="60">
+                        <p className={"education-details" + (this.state.animate ? " animate" : "")}>
+                            Finished my high school at f engineering at Chennai in India. Graduated in first class with distiction scoring 89%. Took part in various extracurricular activities such as karate, running and culturals.
+                        </p>
+                    </foreignObject>
 
                     {/*<circle cx="30" cy="30" r="5" stroke-width=".5" fill="none" />*/}
 
@@ -194,7 +220,7 @@ class Education extends React.Component{
     }
 
     render(){
-        return this.renderNewSVG();
+        return this.renderdom();
     }
 }
 

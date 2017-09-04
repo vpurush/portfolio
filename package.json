@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "webpack --devtool source-map --watch&",
+    "watch": "webpack --devtool source-map --watch",
     "start": "node index.js",
-    "hot": "webpack-dev-server --inline --progress --hot"
+    "hot": "webpack-dev-server --inline --progress --hot",
+    "ws": "webpack-dev-server"
   },
   "author": "",
   "license": "ISC",

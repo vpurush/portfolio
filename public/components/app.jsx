@@ -19,7 +19,7 @@ class App extends React.Component{
         super(props, context);
         this.state = {
             tabs: ['ProfessionExperience', "Education", "TechnicalSkills", "PersonalInfo"],
-            activeTab: 'ProfessionalExperience'
+            activeTab: 'Education'
         };
     }
 

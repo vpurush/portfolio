@@ -83,8 +83,12 @@ const webpackConfig = {
                 }),
             },
             {
-                test: /\.(eot|svg|ttf|woff|woff2|otf)$/,
-                loader: 'url-loader?name=/public/dist/font/[name].[ext]'
+                test: /\.(eot|ttf|woff|woff2|otf)$/,
+                loader: 'file-loader?name=font/[name].[ext]'
+            },
+            {
+                test: /\.(svg)$/,
+                loader: 'file-loader?name=images/[name].[ext]'
             },
         ]
     },
