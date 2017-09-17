@@ -12,7 +12,7 @@
   },
   "author": "",
   "license": "ISC",
-  "devDependencies": {
+  "zdevDependencies": {
     "babel": "^6.23.0",
     "babel-cli": "^6.24.1",
     "babel-loader": "^7.0.0",
@@ -31,7 +31,7 @@
     "webpack": "^2.6.1",
     "webpack-dev-server": "^2.5.1"
   },
-  "dependencies": {
+  "zdependencies": {
     "bootstrap": "^3.3.7",
     "express": "^4.15.3",
     "font-awesome": "^4.7.0",
