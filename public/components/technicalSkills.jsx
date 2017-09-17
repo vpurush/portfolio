@@ -28,13 +28,13 @@ class TechnicalSkills extends React.Component{
                     title: 'Angular JS',
                     displayName: 'AngularJS',
                     description: 'Around 3 years of experience in building UI using Angular JS 1.X',
-                    scale: 3
+                    scale: 5
                 },
                 {
                     title: 'React JS',
                     displayName: 'ReactJS',
                     description: 'Trained myself in React. No work experience, yet have excellent knowledge.',
-                    scale: 3
+                    scale: 4
                 },
                 {
                     title: 'Redux',
@@ -46,7 +46,7 @@ class TechnicalSkills extends React.Component{
                     title: '.NET Framework 4',
                     displayName: '.NET Framework 4',
                     description: 'Around 3 years of experience in building windows and web apps using .NET 4.0',
-                    scale: 3
+                    scale: 2
                 },
                 {
                     title: 'ASP.NET MVC 3',

@@ -9,7 +9,6 @@ footer {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  color: white;
   height: 100%; }
   .professional-experience .item {
     flex: 0 1 auto;
@@ -67,21 +66,21 @@ footer {
     .technical-skills .skill-item:hover {
       filter: blur(3px); }
     .technical-skills .skill-item.horizontal.scale-2 {
-      font-size: 2em; }
+      font-size: 1em; }
     .technical-skills .skill-item.horizontal.scale-3 {
-      font-size: 3em; }
+      font-size: 1.5em; }
     .technical-skills .skill-item.horizontal.scale-4 {
-      font-size: 4em; }
+      font-size: 2em; }
     .technical-skills .skill-item.horizontal.scale-5 {
-      font-size: 5em; }
+      font-size: 2.5em; }
     .technical-skills .skill-item.horizontal.scale-6 {
-      font-size: 6em; }
+      font-size: 3em; }
     .technical-skills .skill-item.horizontal.scale-7 {
-      font-size: 7em; }
+      font-size: 3.5em; }
     .technical-skills .skill-item.horizontal.scale-8 {
-      font-size: 8em; }
+      font-size: 4em; }
     .technical-skills .skill-item.horizontal.scale-9 {
-      font-size: 9em; }
+      font-size: 4.5em; }
     .technical-skills .skill-item.vertical.scale-2 {
       transform: rotate(-90deg);
       font-size: 2em; }
@@ -348,7 +347,6 @@ svg.gun-scope {
   height: calc(100vh - 6em);
   overflow: hidden; }
   .app .content .section-names {
-    color: white;
     display: flex;
     flex-wrap: nowrap;
     flex-direction: row; }

@@ -12,6 +12,6 @@ app.get('/', function (req, res) {
 });
 
 app.listen(server_port, server_ip_address, function(){
-    console.log("Server is ready to receive request at 3000");
+    console.log("Server is ready to receive request at "+ server_port);
 });
 
