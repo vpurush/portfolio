@@ -1,0 +1,15 @@
+.app{
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+
+    .left-pane{
+        flex: 0 0;
+        width: 100px;
+    }
+
+    .content{
+        flex: 1 0;
+
+    }
+}
