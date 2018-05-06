@@ -1,6 +1,7 @@
 var React = require('react');
 var ReactDOM = require("react-dom");
 var $ = require("jquery");
+const { Link } = require('react-router-dom');
 window.$ = $;
 
 require('./menu.scss');
@@ -16,13 +17,16 @@ class Menu extends React.Component{
         return (
             <div className="menu">
                 <div className="logo">
-                    Logo
                 </div>
                 <nav>
-                    <a className="home menu-item" href="#">
+                    <Link to="/home" className="home menu-item" href="#">
                         <i className="fa fa-home"></i>
                         <span>Home</span>
-                    </a>
+                    </Link>
+                    <Link to="/contact" className="contact menu-item" href="#">
+                        <i className="fa fa-envelope"></i>
+                        <span>Contact</span>
+                    </Link>
                 </nav>
             </div>
         );

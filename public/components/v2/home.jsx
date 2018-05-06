@@ -9,6 +9,12 @@ class Home extends React.Component {
 
     constructor(props, context) {
         super(props, context);
+
+        this.contactMe = this.contactMe.bind(this);
+    }
+
+    contactMe(){
+        this.props.history.push("/contact");
     }
 
     render() {
@@ -29,10 +35,10 @@ class Home extends React.Component {
                 <div className="right-pane">
                     <div>
                         <span className="message">
-                            I would love you hear from you about any creative ideas that you might have.
+                            I would love to hear from you...
                         </span>
                         <span>
-                            <button className="contact-me">
+                            <button className="contact-me" onClick={this.contactMe}>
                                 Contact Me
                                 <i className="fa fa-arrow-circle-right"></i>
                             </button>

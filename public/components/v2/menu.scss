@@ -1,7 +1,9 @@
+@import "../../variables.scss";
+
 .menu{
     // background-color: #0088B4;
     // background-color: rosybrown;
-    background-color: #23111B;
+    background-color: $theme-minor;
     height: 100%;
     border-right: 1px solid lightgray;
 
@@ -9,7 +11,13 @@
     flex-direction: column;
 
     .logo{
+        height: 70px;
+        width: 70px;
         flex: 0 0 auto;
+        background-image: url("../../images/custom-logo.svg");
+        background-size: 60px 60px;
+        background-repeat: no-repeat;
+        background-position: center;
     }
 
     nav{
@@ -20,9 +28,10 @@
         justify-content: center;
 
         .menu-item{
+            padding: 2em 0 0 0;
             flex: 0 0 auto;
             // color: #333;
-            color: lightyellow;
+            color: $theme-major;
             text-decoration: none;
 
             i{
@@ -31,6 +40,7 @@
                 text-align: center;
             }
             span{
+                padding: .2em 0 0 0;
                 font-weight: bold;
                 font-size: .7em;
                 display: block;
@@ -41,6 +51,13 @@
                 // color: lightyellow;
                 color: #7FD8BE;
                 cursor: pointer;
+            }
+
+            &.contact{
+                i{
+                    font-size: 1.5em;
+                    padding: 0 0 .1em 0;
+                }
             }
         }
     }

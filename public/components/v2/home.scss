@@ -1,3 +1,5 @@
+@import "../../variables.scss";
+
 div.home{
     height: 100%;
 
@@ -8,7 +10,7 @@ div.home{
         padding-left: 2em;
         font-family: 'Acme', sans-serif;
         
-        flex: 65 0;
+        flex: 67 0;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -34,7 +36,7 @@ div.home{
 
     .right-pane{
         padding: 0 3em 0 3em;
-        flex: 35 0;
+        flex: 33 0;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -53,7 +55,7 @@ div.home{
         }
 
         button.contact-me{
-            color: lightyellow;
+            color: $theme-major;
             margin: 1em 1em 1em 1em;
             padding: 0.5em .5em 0.5em 1.5em;
             text-transform: uppercase;
