@@ -21,9 +21,9 @@ const webpackConfig = {
         filename: 'bundle.js'
     },
     module: {
-        loaders: [
-            { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/, query: { presets: ['react', 'react-hmre']} },
-            { test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules/ },
+        rules:[
+            { test: /\.js$/, use: ['babel-loader'], exclude: /node_modules/ },
+            { test: /\.jsx$/, use: ['babel-loader'], exclude: /node_modules/ },
             // { test: /\.scss$/, loaders: ['style-loader', 'css-loader', 'sass-loader']},
             // {
             //     test: /\.scss$/,
@@ -84,15 +84,16 @@ const webpackConfig = {
             },
             {
                 test: /\.(eot|ttf|woff|woff2|otf)$/,
-                loader: 'file-loader?name=font/[name].[ext]'
+                use: ['file-loader?name=font/[name].[ext]']
             },
             {
                 test: /\.(svg)$/,
-                loader: 'file-loader?name=images/[name].[ext]'
-            },
+                use: ['file-loader?name=images/[name].[ext]']
+            }
         ]
     },
-    plugins: [HtmlWebpackPluginConfig, extractSass]
+    plugins: [HtmlWebpackPluginConfig, extractSass],
+    devtool: true
 };
 
 module.exports = webpackConfig;
