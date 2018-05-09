@@ -26,3 +26,19 @@ input[type="submit"], button
  box-shadow: none;
  border-radius: 0px;
 }
+
+@import "./components/v2/app";
+@import "./components/v2/menu";
+@import "./components/v2/home";
+@import "./components/v2/contact";
+
+@media screen and (min-width: 768px) and (max-width: 991px){
+    @import "./components/v2/app-medium";
+    @import "./components/v2/home-medium";
+    @import "./components/v2/menu-medium";
+    // @import "./components/v2/contact";
+}
+
+@media screen and (max-width: 767px) and (max-width: 991px){
+    
+}

@@ -1,0 +1,101 @@
+.menu{
+    width: 10em;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    transition: left .7s;
+
+    .logo{
+        width: 8em;
+        height: 8em;
+        margin: 1em 1em 1em 1em;
+        z-index: 100;
+        transition: left .7s;
+    }
+
+    &.hidden-menu{
+        left: -9em;
+
+        .logo{
+            left: 6em;
+            width: 4em;
+            height: 4em;
+            box-shadow: 3px 0 3px black;
+            border-radius: 2em;
+
+            &::before{
+                content: "arrow_forward_ios";
+                font-family: "Material Icons";
+                position: absolute;
+                left: 0em;
+                background-color: rgba(1, 1, 0, 0.5);
+                height: 2em;
+                width: 2em;
+                border-radius: 2em;
+                text-align: right;
+                vertical-align: middle;
+                color: lightyellow;
+                line-height: 2em;
+                font-size: 2em;
+            }
+        }
+
+        .menu-overlay{
+            display: none;
+        }
+
+        nav{
+            display: none;
+        }
+
+        // .pull-menu-out{
+        //     position: fixed;
+        //     display: block;
+        //     left: 11em;
+        // }
+    }
+
+
+
+    nav{
+        justify-content: flex-start;
+        z-index: 100;
+
+        .menu-item{
+            padding: 1em 0 0 2em;
+            text-align: left;
+
+            i{
+                vertical-align: sub;
+                display: inline-block;
+            }
+            span{
+                display: inline-block;
+                padding: .2em 0 0 1em;
+            }
+            
+            &.contact{
+                i{
+                    font-size: 1.4em;
+
+                    &::before{
+                        margin-left: 3px;
+                    }
+                }
+            }
+        }
+    }
+
+    .menu-overlay{
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        height: 100vh;
+        width: 100vw;
+        z-index: 50;
+    }
+
+    .pull-menu-out{
+        display: none;
+    }
+}

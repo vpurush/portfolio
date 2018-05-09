@@ -2,12 +2,11 @@ var React = require('react');
 var ReactDOM = require("react-dom");
 const Home = require("./home.jsx");
 const Menu = require("./menu.jsx");
+const MenuMedium = require("./menu-medium.jsx");
 const Contact = require("./contact.jsx");
 const { HashRouter, BrowserRouter, Route, Redirect, Switch } = require('react-router-dom');
 var $ = require("jquery");
 window.$ = $;
-
-require('./app.scss');
 
 class App extends React.Component{
 
@@ -32,6 +31,7 @@ class App extends React.Component{
                             <Redirect from="*" to="/home" />
                         </Switch>
                     </div>
+                    <MenuMedium></MenuMedium>
                 </div>
             </HashRouter>
         );

@@ -1,13 +1,15 @@
 .app{
     height: 100vh;
+    width: 100vw;
     display: flex;
     flex-direction: row;
+    position: relative;
 
-    .left-pane{
+    > .left-pane{
         flex: 0 0 70px;
     }
 
-    .content{
+    > .content{
         flex: 1 0;
 
     }

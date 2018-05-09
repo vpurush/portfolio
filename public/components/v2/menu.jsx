@@ -2,10 +2,11 @@ var React = require('react');
 var ReactDOM = require("react-dom");
 var $ = require("jquery");
 const { Link } = require('react-router-dom');
+const Desktop = require("../../utils/responsive-decorators/desktop.js");
 window.$ = $;
 
-require('./menu.scss');
 
+@Desktop
 class Menu extends React.Component{
 
     constructor(props, context){

@@ -3,8 +3,6 @@ var ReactDOM = require("react-dom");
 var $ = require("jquery");
 window.$ = $;
 
-require('./home.scss');
-
 class Home extends React.Component {
 
     constructor(props, context) {
