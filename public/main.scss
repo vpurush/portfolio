@@ -16,6 +16,8 @@ body{
 
 #root{
     position: relative;
+    height: 100%;
+    width: 100%;
 }
 
 input[type="submit"], button
@@ -43,5 +45,6 @@ input[type="submit"], button
     @import "./components/v2/app-small";
     @import "./components/v2/home-small";
     @import "./components/v2/menu-small";
+    @import "./components/v2/contact-small";
     
 }
