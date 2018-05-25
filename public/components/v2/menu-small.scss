@@ -1,0 +1,129 @@
+.menu{
+    position: absolute;
+    width: 0;
+    left: 0px;
+    top: 0px;
+
+    .logo{
+        position: absolute;
+        top: calc(50% - 2em);
+        z-index: 100;
+        left: -2em;
+        width: 4em;
+        height: 4em;
+        box-shadow: 3px 0 3px black;
+        border-radius: 2em;
+
+        &::before{
+            content: "arrow_forward_ios";
+            font-family: "Material Icons";
+            position: absolute;
+            left: 0em;
+            background-color: rgba(1, 1, 0, 0.5);
+            height: 2em;
+            width: 2em;
+            border-radius: 2em;
+            text-align: right;
+            vertical-align: middle;
+            color: lightyellow;
+            line-height: 2em;
+            font-size: 2em;
+            cursor: pointer;
+        }
+    }
+
+    nav{
+        position: absolute;
+        display: block;
+        top: calc(50% - 6em);
+        z-index: 100;
+
+        background-color: rgba(0,0,0,.4);
+        width: 12em;
+        border-radius: 6em;
+        left: -6em;
+        height: 12em;
+        transition: left 1s ease-in-out;
+
+        .circle{
+
+            left: 5em;
+            position: absolute;;
+            width: 1.5em; 
+            height: 10em;
+            margin-top: 1em;
+            transition: transform 1s linear;
+            
+            // &:before {
+            //     content:'';
+            //     position:absolute;
+            //     top:0; 
+            //     left:0;
+            //     width:100%; 
+            //     padding-bottom:100%;
+            //     border-radius: 100%;
+            //     // border: 2px solid teal;
+            //     // background:gold;
+            // }
+
+            // i:before{
+            //     background-color: rgba(0,0,0, .5);
+            //     padding: .25rem;
+            //     border-radius: 3rem;
+            // }
+        }
+        
+        .home-circle{
+            transform : rotate(60deg);
+
+            i{
+                transform: rotate(-60deg);
+
+                &:before{
+                    padding: .15rem;
+                }
+            }
+        }
+
+        .contact-circle{
+            -webkit-transform : rotate(120deg);
+            i{
+                transform: rotate(-120deg);
+            }
+        }
+    }
+    
+    .menu-overlay{
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        height: 100vh;
+        width: 100vw;
+        z-index: 50;
+        // background-color: rgba(0,0,0,0.5);    
+    }
+}
+
+.menu{
+    &.hidden-menu{
+        nav{
+            // display: none;
+            left: -12em;
+            transition: left 1s ease-in-out;
+
+            .circle{
+                transition: transform 1s linear;
+                transform: rotate(-90deg);
+
+                i{
+                    transition: transform 1s linear;
+                    transform: rotate(0deg);
+                }
+            }
+        }
+
+        .menu-overlay{
+            display: none;
+        }
+    }
+}

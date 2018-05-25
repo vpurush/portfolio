@@ -4,7 +4,7 @@ const Desktop = (constructr) => {
             super(props, context);
             this.state = this.state || {};
 
-            this.mql = window.matchMedia("(min-width: 992px)");
+            this.mql = window.matchMedia("(min-width: 960px)");
             if(this.mql.matches){
                 this.state.showComponent = true;
             }else{

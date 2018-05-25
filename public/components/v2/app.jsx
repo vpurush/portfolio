@@ -3,6 +3,7 @@ var ReactDOM = require("react-dom");
 const Home = require("./home.jsx");
 const Menu = require("./menu.jsx");
 const MenuMedium = require("./menu-medium.jsx");
+const MenuSmall = require("./menu-small.jsx");
 const Contact = require("./contact.jsx");
 const { HashRouter, BrowserRouter, Route, Redirect, Switch } = require('react-router-dom');
 var $ = require("jquery");
@@ -32,6 +33,7 @@ class App extends React.Component{
                         </Switch>
                     </div>
                     <MenuMedium></MenuMedium>
+                    <MenuSmall></MenuSmall>
                 </div>
             </HashRouter>
         );

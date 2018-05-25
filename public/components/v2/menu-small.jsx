@@ -2,12 +2,12 @@ var React = require('react');
 var ReactDOM = require("react-dom");
 var $ = require("jquery");
 const { Link } = require('react-router-dom');
-const Tablet = require("../../utils/responsive-decorators/tablet.js");
+const Mobile = require("../../utils/responsive-decorators/mobile.js");
 window.$ = $;
 
 
-@Tablet
-class MenuMedium extends React.Component{
+@Mobile
+class MenuSmall extends React.Component{
 
     constructor(props, context){
         super(props, context);
@@ -40,23 +40,23 @@ class MenuMedium extends React.Component{
                 <div className="logo">
                 </div>
                 <nav>
-                    <Link to="/home" className="home menu-item" onClick={this.hide}>
-                        <i className="fa fa-home"></i>
-                        <span>Home</span>
-                    </Link>
-                    <Link to="/contact" className="contact menu-item" onClick={this.hide}>
-                        <i className="fa fa-envelope"></i>
-                        <span>Contact</span>
-                    </Link>
+                    <div className="circle home-circle">
+                        <Link to="/home" className="home menu-item" onClick={this.hide}>
+                            <i className="fa fa-home"></i>
+                        </Link>
+                    </div>
+                    <div className="circle contact-circle">
+                        <Link to="/contact" className="contact menu-item" onClick={this.hide}>
+                            <i className="fa fa-envelope"></i>
+                        </Link>
+                    </div>
                 </nav>
                 <div className="menu-overlay"  onClick={this.hide}>
                 </div>
                 {/* <i className="pull-menu-out material-icons">forward</i> */}
-                <div className="spacer">
-                </div>
             </div>
         );
     }
 }
 
-module.exports = MenuMedium;
+module.exports = MenuSmall;

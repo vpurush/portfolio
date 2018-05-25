@@ -1,0 +1,13 @@
+div.home{
+    .right-pane{
+        display: none;
+    }
+
+    .left-pane{
+        text-align: center;
+
+        > span:not(:first-child){
+            margin: 0.7em 0 0 0;
+        }
+    }
+}

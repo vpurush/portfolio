@@ -4,7 +4,7 @@ const Tablet = (constructr) => {
             super(props, context);
             this.state = this.state || {};
 
-            this.mql = window.matchMedia("(min-width: 768px) and (max-width: 991px)");
+            this.mql = window.matchMedia("(min-width: 480px) and (max-width: 959px)");
             if(this.mql.matches){
                 this.state.showComponent = true;
             }else{
