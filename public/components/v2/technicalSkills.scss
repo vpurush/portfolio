@@ -1,0 +1,218 @@
+.technical-skills{
+    text-align: center;
+    height: 100%;
+    width: 100%;
+
+    .info{
+        height: 2em;
+
+        .glyphicon-repeat{
+            cursor: pointer;
+            padding-left: 10px;
+            color: cornflowerblue;
+        }
+    }
+
+    .hide{
+        display: none;
+    }
+
+    .wrapper{
+        height: calc(100% - 2em);
+        text-align: center;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .refresh{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+        height: 100%;
+    }
+
+    .skill-item{
+        display: inline-block;
+        position: absolute;
+        cursor: pointer;
+
+        &:hover{
+            filter: blur(3px);
+        }
+
+        &.scale-2{
+            //transform: scale(2);
+            font-size: 1em;
+        }
+        &.scale-3{
+            //transform: scale(2);
+            font-size: 1.5em;
+        }
+        &.scale-4{
+            //transform: scale(2);
+            font-size: 2em;
+        }
+        &.scale-5{
+            //transform: scale(2);
+            font-size: 2.5em;
+        }
+        &.scale-6{
+            //transform: scale(2);
+            font-size: 3em;
+        }
+        &.scale-7{
+            //transform: scale(2);
+            font-size: 3.5em;
+        }
+        &.scale-8{
+            //transform: scale(2);
+            font-size: 4em;
+        }
+        &.scale-9{
+            //transform: scale(2);
+            font-size: 4.5em;
+        }
+
+        &.vertical{
+
+            &.scale-2{
+                //transform: scale(2) rotate(-90deg);
+                transform: rotate(-90deg);
+            }
+            &.scale-3{
+                //transform: scale(2) rotate(-90deg);
+                transform: rotate(-90deg);
+            }
+            &.scale-4{
+                //transform: scale(2) rotate(-90deg);
+                transform: rotate(-90deg);
+            }
+            &.scale-5{
+                //transform: scale(2) rotate(-90deg);
+                transform: rotate(-90deg);
+            }
+            &.scale-6{
+                //transform: scale(2) rotate(-90deg);
+                transform: rotate(-90deg);
+            }
+            &.scale-7{
+                //transform: scale(2) rotate(-90deg);
+                transform: rotate(-90deg);
+            }
+            &.scale-8{
+                //transform: scale(2) rotate(-90deg);
+                transform: rotate(-90deg);
+            }
+            &.scale-9{
+                //transform: scale(2) rotate(-90deg);
+                transform: rotate(-90deg);
+            }
+        }
+    }
+
+
+    .cornflowerblue{
+        color: cornflowerblue;
+    }
+    
+    .burlywood{
+        color: burlywood;
+    }
+    
+    .darksalmon{
+        color: darksalmon;
+    }
+    
+    .deepskyblue{
+        color: deepskyblue;
+    }
+    
+    .gold{
+        color: gold;
+    }
+    
+    .hotpink{
+        color: hotpink;
+    }
+    
+    .lightcoral{
+        color: lightcoral;
+    }
+    
+    .orchid{
+        color: orchid;
+    }
+    
+    .palevioletred{
+        color: palevioletred;
+    }
+    
+    .salmon{
+        color: salmon;
+    }
+    
+    .sandybrown{
+        color: sandybrown;
+    }
+    
+    .steelblue{
+        color: steelblue;
+    }
+    
+    .tan{
+        color: tan;
+    }
+    
+    .tomato{
+        color: tomato;
+    }
+    
+    .cadetblue{
+        color: cadetblue;
+    }
+
+    .mediumseagreen{
+        color: mediumseagreen;
+    }
+
+}
+
+.technical-skill-refresh{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+
+    @keyframes spinner{
+        0%{
+            transform: rotate(0deg);
+        }
+        25%{
+            transform: rotate(90deg);
+        }
+        50%{
+            transform: rotate(180deg);
+        }
+        75%{
+            transform: rotate(270deg);
+        }
+        100%{
+            transform: rotate(360deg);
+        }
+    }
+
+    .glyphicon-refresh{
+        font-size: 2em;
+        animation-name: spinner;
+        animation-duration: 3s;
+        animation-iteration-count: infinite;
+    }
+}

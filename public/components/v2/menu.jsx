@@ -28,6 +28,10 @@ class Menu extends React.Component{
                         <i className="fa fa-envelope"></i>
                         <span>Contact</span>
                     </Link>
+                    <Link to="/skills" className="skills menu-item" href="#">
+                        <i className="fa fa-envelope"></i>
+                        <span>Skills</span>
+                    </Link>
                 </nav>
             </div>
         );

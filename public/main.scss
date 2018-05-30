@@ -33,6 +33,8 @@ input[type="submit"], button
 @import "./components/v2/menu";
 @import "./components/v2/home";
 @import "./components/v2/contact";
+@import "./components/v2/skills";
+@import "./components/v2/technicalSkills";
 
 @media screen and (min-width: 480px) and (max-width: 959px){
     @import "./components/v2/app-medium";
