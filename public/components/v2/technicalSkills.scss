@@ -37,9 +37,9 @@
         position: absolute;
         cursor: pointer;
 
-        &:hover{
-            filter: blur(3px);
-        }
+        // &:hover{
+        //     filter: blur(3px);
+        // }
 
         &.scale-2{
             //transform: scale(2);
@@ -75,6 +75,11 @@
         }
 
         &.vertical{
+            
+            &.scale-1{
+                //transform: scale(2) rotate(-90deg);
+                transform: rotate(-90deg);
+            }
 
             &.scale-2{
                 //transform: scale(2) rotate(-90deg);
@@ -107,6 +112,113 @@
             &.scale-9{
                 //transform: scale(2) rotate(-90deg);
                 transform: rotate(-90deg);
+            }
+
+            .more-info{
+                transform: rotate(90deg);
+            }
+        }
+
+        .more-info{
+            background-color: $theme-major;
+            width: 15rem;
+            height: 6rem;
+            display: none;
+            position: absolute;
+            transform: reset;
+            padding: 1rem 1rem;
+            border: 1px solid gray;
+            box-shadow: 1px 1px 3px 0 grey;
+            border-radius: 5px;
+            color: #333;
+
+            .name{
+                text-align: left;
+                font-size: 2rem;
+            }
+
+            .confidence-scale{
+                height: 2px;
+                content: " ";
+                background-color: lightgray;
+                margin: .3rem 0rem;
+            }
+
+            .confidence{
+                height: 2px;
+                content: "Confidence";
+                background-color: $theme-minor;
+                margin: -.6rem 0rem .3rem 0rem;
+                margin-top: calc(-.3rem - 2px);
+                
+                &.level-1{
+                    width: 10%;
+                    background-color: #A31E27;
+                }
+                &.level-2{
+                    width: 20%;
+                    background-color: #E13C47;
+                }
+                &.level-3{
+                    width: 30%;
+                    background-color: #E7636C;
+                }
+                &.level-4{
+                    width: 40%;
+                    background-color: #D36135;
+                }
+                &.level-5{
+                    width: 50%;
+                    background-color: #FFAD67;
+                }
+                &.level-6{
+                    width: 60%;
+                    background-color: #DDF1C6;
+                }
+                &.level-7{
+                    width: 70%;
+                    background-color: #86BA90;
+                }
+                &.level-8{
+                    width: 80%;
+                    background-color: #698F3F;
+                }
+                &.level-9{
+                    width: 90%;
+                    background-color: #4D692E;
+                }
+                &.level-10{
+                    width: 100%;
+                    background-color: #4D692E;
+                }
+                    
+            }
+
+            .confidence-text{
+                text-align: left;
+                font-size: .8rem;
+            }
+
+            .tags{
+                font-size: .8rem;
+                text-align: left;
+
+
+                .tag{
+                    display: inline-block;
+                    padding: 0em .5em;
+
+                    &:first-child{
+                        padding-left: 0;
+                    }
+                }
+            }
+        }
+
+        &:hover{
+            z-index: 5;
+            .more-info{
+                display: block;
             }
         }
     }

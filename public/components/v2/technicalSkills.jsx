@@ -16,103 +16,154 @@ class TechnicalSkills extends React.Component{
                     title: 'Javascript',
                     displayName: 'Javascript',
                     description: 'More than 7 years of experience in advanced javascript',
-                    scale: 4
+                    scale: 4,
+                    confidence: 9,
+                    usage: 9,
+                    tags: ["Have extensive experience"]
                 },
                 {
                     title: 'Knockout JS',
                     displayName: 'KnockoutJS',
                     description: 'Around 3 years of experience in building UI using Knockout JS',
-                    scale: 3
+                    scale: 3,
+                    confidence: 7,
+                    usage: 4,
+                    tags: ["Have experience"]
                 },
                 {
                     title: 'Angular JS',
                     displayName: 'AngularJS',
                     description: 'Around 3 years of experience in building UI using Angular JS 1.X',
-                    scale: 5
+                    scale: 5,
+                    confidence: 8,
+                    usage: 8,
+                    tags: ["Have extensive experience"]
                 },
                 {
                     title: 'React JS',
                     displayName: 'ReactJS',
                     description: 'Around 6 months of experience in React JS.',
-                    scale: 4
+                    scale: 4,
+                    confidence: 7,
+                    usage: 9,
+                    tags: ["Have experience"]
                 },
                 {
                     title: 'Redux',
                     displayName: 'Redux',
                     description: 'Have been working on Redux for 6 months. Have very good understanding.',
-                    scale: 3
+                    scale: 3,
+                    confidence: 7,
+                    usage: 9,
+                    tags: ["Have experience"]
                 },
                 {
                     title: '.NET Framework 4',
                     displayName: '.NET Framework 4',
                     description: 'Around 3 years of experience in building windows and web apps using .NET 4.0',
-                    scale: 2
+                    scale: 2,
+                    confidence: 5,
+                    usage: 3,
+                    tags: ["It has been a while"]
                 },
                 {
                     title: 'ASP.NET MVC 3',
                     displayName: 'ASP.NET MVC 3',
                     description: 'Around 2 years of experience in building web applications using ASP.NET MVC 3',
-                    scale: 2
+                    scale: 2,
+                    confidence: 5,
+                    usage: 3,
+                    tags: ["It has been a while"]
                 },
                 {
                     title: 'Jquery',
                     displayName: 'Jquery',
                     description: null,
-                    scale: 5
+                    scale: 5,
+                    confidence: 7,
+                    usage: 8,
+                    tags: ["Have experience"]
                 },
                 {
                     title: 'HTML 5',
                     displayName: 'HTML5',
                     description: null,
-                    scale: 4
+                    scale: 4,
+                    confidence: 8,
+                    usage: 9,
+                    tags: ["Have extensive experience"]
                 },
                 {
                     title: 'CSS 3',
                     displayName: 'CSS 3',
                     description: "Have a good understanding of various concepts like pixel ratio, flexbox, variables, etc",
-                    scale: 4
+                    scale: 4,
+                    confidence: 7,
+                    usage: 9,
+                    tags: ["Have extensive experience"]
                 },
                 {
                     title: 'Bootstrap CSS',
                     displayName: 'Bootstrap CSS',
                     description: "Well versed in using the grid layout for responsive design",
-                    scale: 2
+                    scale: 2,
+                    confidence: 7,
+                    usage: 8,
+                    tags: ["Have experience"]
                 },
                 {
                     title: 'SASS',
                     displayName: 'SASS',
                     description: null,
-                    scale: 3
+                    scale: 3,
+                    confidence: 6,
+                    usage: 8,
+                    tags: ["Have working knowledge"]
                 },
                 {
                     title: 'Gulp',
                     displayName: 'Gulp',
                     description: 'Have created several kinds of tasks using grunt and gulp',
-                    scale: 3
+                    scale: 3,
+                    confidence: 4,
+                    usage: 4,
+                    tags: ["Have used before"]
                 },
                 {
                     title: 'Grunt',
                     displayName: 'Grunt',
                     description: 'Have created several kinds of tasks using grunt and gulp',
-                    scale: 3
+                    scale: 3,
+                    confidence: 4,
+                    usage: 4,
+                    tags: ["Have used before"]
                 },
                 {
                     title: 'Webpack',
                     displayName: 'Webpack',
                     description: 'Aware of the basic webpack setup needed for a React project',
-                    scale: 3
+                    scale: 3,
+                    confidence: 5,
+                    usage: 8,
+                    tags: ["Know basics"]
                 },
                 {
                     title: 'Machine Learning',
                     displayName: 'Machine Learning',
                     description: 'Aware of the basics in machine learning',
-                    scale: 1
+                    scale: 1,
+                    confidence: 4,
+                    usage: 7,
+                    tags: ["Know few algorithms"]
                 },
                 {
                     title: 'Tensorflow',
                     displayName: 'Tensorflow',
                     description: 'I am learning Tensorflow',
-                    scale: 1
+                    scale: 1,
+                    confidence: 2,
+                    usage: 7,
+                    tags: ["Learning"]
                 }
             ],
             // repositionComplete: true
@@ -148,6 +199,14 @@ class TechnicalSkills extends React.Component{
         // $(elm).popover({
         //     trigger: 'hover'
         // });
+
+        elm.addEventListener("mouseenter", (e) => {
+            console.log("mouse enter");
+        })
+
+        elm.addEventListener("mouseleave", (e) => {
+            console.log("mounse leave")
+        })
     }
 
     getColor(){
@@ -165,8 +224,25 @@ class TechnicalSkills extends React.Component{
             <div className="wrapper">
                 {this.state.skills.map(function(s, i){
                     return(
-                        <div key={i} id={"skill-item-" + i} className={"skill-item " + this.getClassNames(s, i)} style={{top: s.top, left:s.left}} data-scale={s.scale} title={s.title} data-content={s.description} data-toggle="popover" data-placement="top" ref={this.initSkillElement}>
-                            <div className="display-name">{s.displayName}</div>
+                        <div key={i} title="" id={"skill-item-" + i} className={"skill-item " + this.getClassNames(s, i)} style={{top: s.top, left:s.left}} data-scale={s.scale} title={s.title} data-content={s.description} data-toggle="popover" data-placement="top" ref={this.initSkillElement}>
+                            <div className="display-name" title="">{s.displayName}</div>
+                            <div className="more-info">
+                                <p className="name">{s.displayName}</p>
+                                <div className="confidence-scale">
+                                </div>
+                                <div className={"confidence level-" + s.confidence}>
+                                </div>
+                                <div className="confidence-text">
+                                    {"Confidence: " + (s.confidence)*10 + "%"}
+                                </div>
+                                <div className="tags">
+                                    {s.tags.map(t => {
+                                        return (
+                                            <span className="tag">{t}</span>
+                                        );
+                                    })}
+                                </div>
+                            </div>
                         </div>
                     )
                 }.bind(this))}
