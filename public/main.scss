@@ -40,6 +40,8 @@ input[type="submit"], button
     @import "./components/v2/app-medium";
     @import "./components/v2/home-medium";
     @import "./components/v2/menu-medium";
+    @import "./components/v2/skills-medium";
+    @import "./components/v2/technicalSkills-medium";
     // @import "./components/v2/contact";
 }
 
@@ -48,5 +50,7 @@ input[type="submit"], button
     @import "./components/v2/home-small";
     @import "./components/v2/menu-small";
     @import "./components/v2/contact-small";
+    @import "./components/v2/skills-small";
+    @import "./components/v2/technicalSkills-small";
     
 }

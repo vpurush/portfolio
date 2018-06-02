@@ -41,12 +41,22 @@ class MenuMedium extends React.Component{
                 </div>
                 <nav>
                     <Link to="/home" className="home menu-item" onClick={this.hide}>
-                        <i className="fa fa-home"></i>
+                        <i className="material-icons">
+                            home
+                        </i>
                         <span>Home</span>
                     </Link>
                     <Link to="/contact" className="contact menu-item" onClick={this.hide}>
-                        <i className="fa fa-envelope"></i>
+                        <i className="material-icons">
+                            mail
+                        </i>
                         <span>Contact</span>
+                    </Link>
+                    <Link to="/skills" className="skills menu-item" onClick={this.hide}>
+                        <i className="material-icons">
+                            assignment
+                        </i>
+                        <span>Skills</span>
                     </Link>
                 </nav>
                 <div className="menu-overlay"  onClick={this.hide}>

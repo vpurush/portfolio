@@ -6,22 +6,31 @@ section.skills{
     // font-family: 'Oswald', sans-serif;
     font-family: 'Open Sans Condensed', sans-serif;
 
+    .spacer{
+        flex: 6 0;
+    }
+
     .left-pane{
-        flex: 40 0;
+        flex: 37 0;
         display: flex;
         flex-direction: row;
         justify-content: center;
         align-items: center;
         flex-wrap: wrap;
         font-size: 1.5em;
-        
-        p{
-            padding: 1em 2em;
+        overflow-x: hidden;
+
+        .description{
+            flex: 1 0;
+            
+            p{
+                // padding: 1em 2em;
+            }
         }
     }
 
     .right-pane{
-        flex: 60 0;
+        flex: 57 0;
         display: flex;
         flex-direction: column;
         justify-content: center;

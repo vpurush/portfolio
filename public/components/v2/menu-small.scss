@@ -74,10 +74,10 @@
         }
         
         .home-circle{
-            transform : rotate(60deg);
+            transform : rotate(45deg);
 
             i{
-                transform: rotate(-60deg);
+                transform: rotate(-45deg);
 
                 &:before{
                     padding: .15rem;
@@ -86,9 +86,16 @@
         }
 
         .contact-circle{
-            -webkit-transform : rotate(120deg);
+            -webkit-transform : rotate(90deg);
             i{
-                transform: rotate(-120deg);
+                transform: rotate(-90deg);
+            }
+        }
+
+        .skills-circle{
+            -webkit-transform : rotate(135deg);
+            i{
+                transform: rotate(-135deg);
             }
         }
     }

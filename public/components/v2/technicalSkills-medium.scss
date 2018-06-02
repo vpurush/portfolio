@@ -1,0 +1,44 @@
+.technical-skills{
+
+    .skill-item{
+        
+        &:hover{
+            filter: blur(3px);
+        }
+
+        &.scale-2{
+            //transform: scale(2);
+            font-size: 1em;
+        }
+        &.scale-3{
+            //transform: scale(2);
+            font-size: 1.3em;
+        }
+        &.scale-4{
+            //transform: scale(2);
+            font-size: 1.6em;
+        }
+        &.scale-5{
+            //transform: scale(2);
+            font-size: 1.9em;
+        }
+        &.scale-6{
+            //transform: scale(2);
+            font-size: 2.2em;
+        }
+        &.scale-7{
+            //transform: scale(2);
+            font-size: 2.5em;
+        }
+        &.scale-8{
+            //transform: scale(2);
+            font-size: 2.8em;
+        }
+        &.scale-9{
+            //transform: scale(2);
+            font-size: 3.1em;
+        }
+
+    }
+
+}

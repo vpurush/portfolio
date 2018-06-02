@@ -3,9 +3,9 @@ var $ = require("jquery");
 var _ = require("lodash");
 window.jQuery = $;
 var bootstrap = require("bootstrap");
+var MediumLarge = require("../../utils/responsive-decorators/medium-large.js");
 
-require('./technicalSkills.scss');
-
+@MediumLarge
 class TechnicalSkills extends React.Component{
     constructor(props, context){
         super(props, context);        
@@ -15,7 +15,7 @@ class TechnicalSkills extends React.Component{
                 {
                     title: 'Javascript',
                     displayName: 'Javascript',
-                    description: 'More than 6 years of experience in advanced javascript',
+                    description: 'More than 7 years of experience in advanced javascript',
                     scale: 4
                 },
                 {
@@ -33,13 +33,13 @@ class TechnicalSkills extends React.Component{
                 {
                     title: 'React JS',
                     displayName: 'ReactJS',
-                    description: 'Trained myself in React. No work experience, yet have excellent knowledge.',
+                    description: 'Around 6 months of experience in React JS.',
                     scale: 4
                 },
                 {
                     title: 'Redux',
                     displayName: 'Redux',
-                    description: 'Trained myself in Redux. Have very good understanding. No work experience, yet have excellent knowledge and thorough understanding.',
+                    description: 'Have been working on Redux for 6 months. Have very good understanding.',
                     scale: 3
                 },
                 {
@@ -69,13 +69,13 @@ class TechnicalSkills extends React.Component{
                 {
                     title: 'CSS 3',
                     displayName: 'CSS 3',
-                    description: null,
+                    description: "Have a good understanding of various concepts like pixel ratio, flexbox, variables, etc",
                     scale: 4
                 },
                 {
                     title: 'Bootstrap CSS',
                     displayName: 'Bootstrap CSS',
-                    description: null,
+                    description: "Well versed in using the grid layout for responsive design",
                     scale: 2
                 },
                 {
@@ -95,9 +95,27 @@ class TechnicalSkills extends React.Component{
                     displayName: 'Grunt',
                     description: 'Have created several kinds of tasks using grunt and gulp',
                     scale: 3
+                },
+                {
+                    title: 'Webpack',
+                    displayName: 'Webpack',
+                    description: 'Aware of the basic webpack setup needed for a React project',
+                    scale: 3
+                },
+                {
+                    title: 'Machine Learning',
+                    displayName: 'Machine Learning',
+                    description: 'Aware of the basics in machine learning',
+                    scale: 1
+                },
+                {
+                    title: 'Tensorflow',
+                    displayName: 'Tensorflow',
+                    description: 'I am learning Tensorflow',
+                    scale: 1
                 }
             ],
-            repositionComplete: true
+            // repositionComplete: true
         };
 
         this.regenerate = this.regenerate.bind(this);
@@ -127,9 +145,9 @@ class TechnicalSkills extends React.Component{
 
     initSkillElement(elm){
         //$(elm).tooltip();
-        $(elm).popover({
-            trigger: 'hover'
-        });
+        // $(elm).popover({
+        //     trigger: 'hover'
+        // });
     }
 
     getColor(){
@@ -157,10 +175,10 @@ class TechnicalSkills extends React.Component{
         if(this.state.repositionComplete){
             content = (
                 <div className="technical-skills">
-                    <div className="info">
+                    {/* <div className="info">
                         Move your mouse over the technologies to know more.
                         <span className="glyphicon glyphicon-repeat" onClick={this.regenerate}></span>
-                    </div>
+                    </div> */}
                     {techSkills}
                 </div>
             );
@@ -372,14 +390,17 @@ class TechnicalSkills extends React.Component{
         while(true){
             itr++;
             
-            var randomx = Math.ceil(Math.random() * radiusRange * radiusMultiplicationFactor) + radius.min;
-            var randomy = Math.ceil(Math.random() * radiusRange * radiusMultiplicationFactor) + radius.min;
+            var randomx = Math.ceil(Math.random() * radiusRange * radiusMultiplicationFactor) + radius.min * radiusMultiplicationFactor;
+            var randomy = Math.ceil(Math.random() * radiusRange / radiusMultiplicationFactor) + radius.min / radiusMultiplicationFactor;
             
             if(side != "r" && (side == "l" || Math.random() > 0.5)){
                 randomx = randomx * -1;
+                randomy = Math.ceil(Math.random() * radius.max / radiusMultiplicationFactor);
             }
             if(side != "b" && (side == "t" || Math.random() > 0.5)){
                 randomy = randomy * -1;
+                randomx = Math.ceil(Math.random() * radius.max * radiusMultiplicationFactor);
+            
             }
             //var adjustment = 20;
             output = {
@@ -502,8 +523,8 @@ class TechnicalSkills extends React.Component{
     regenerate(){
         
         this.setState({
-            // repositionComplete: false
-            repositionComplete: true
+            repositionComplete: false
+            // repositionComplete: true
         });
         this.forceUpdate();
 
@@ -588,6 +609,10 @@ class TechnicalSkills extends React.Component{
 
     componentDidMount(){
         setTimeout(this.reposition.bind(this), 500);
+
+        window.addEventListener("orientationchange", () => {
+            this.regenerate();
+        });
     }
 
     componentDidUpdate(){

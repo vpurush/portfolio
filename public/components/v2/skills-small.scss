@@ -1,0 +1,46 @@
+section.skills{
+    flex-direction: column;
+
+    .spacer{
+        display: none;
+    }
+
+    .left-pane{
+        flex: 1 0 auto;
+        // height: 100vh;
+        justify-content: center;
+
+        p:not(.gutter){
+            margin: 0.5em 1em 0.5em 1.5em;
+            padding: 0em 0em 0em .5em;
+
+            &:nth-child(1){
+                border-left: solid 1px #4C5760;
+            }
+            &:nth-child(2){
+                border-left: solid 1px #93A8AC;
+            }
+            &:nth-child(3){
+                border-left: solid 1px #006989;
+            }
+            &:nth-child(4){
+                border-left: solid 1px #66635B;
+            }
+            &:nth-child(5){
+                border-left: solid 1px #01A7C2;
+            }
+        }
+
+        .gutter{
+            display: none;
+        }
+    }
+
+    .right-pane{
+        padding-top: 1em;
+        flex: 1 0 auto;
+        height: 100vh;
+
+        font-size: 1.5em;
+    }
+}

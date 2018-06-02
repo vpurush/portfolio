@@ -1,0 +1,74 @@
+.technical-skills{
+    padding-left: 2em;
+    text-align: left;
+
+    .skill{
+        padding: .5em 0em;
+
+        .name{
+            text-align: left;
+        }
+
+        .confidence{
+            height: 2px;
+            content: " ";
+            background-color: $theme-minor;
+            margin: .3em 0em;
+            
+            &.level-1{
+                width: 10%;
+                background-color: #A31E27;
+            }
+            &.level-2{
+                width: 20%;
+                background-color: #E13C47;
+            }
+            &.level-3{
+                width: 30%;
+                background-color: #E7636C;
+            }
+            &.level-4{
+                width: 40%;
+                background-color: #D36135;
+            }
+            &.level-5{
+                width: 50%;
+                background-color: #FFAD67;
+            }
+            &.level-6{
+                width: 60%;
+                background-color: #DDF1C6;
+            }
+            &.level-7{
+                width: 70%;
+                background-color: #86BA90;
+            }
+            &.level-8{
+                width: 80%;
+                background-color: #698F3F;
+            }
+            &.level-9{
+                width: 90%;
+                background-color: #4D692E;
+            }
+            &.level-10{
+                width: 100%;
+                background-color: #4D692E;
+            }
+                
+        }
+
+        .tags{
+            font-size: .5em;
+
+            .tag{
+                display: inline-block;
+                padding: 0em .5em;
+
+                &:first-child{
+                    padding-left: 0;
+                }
+            }
+        }
+    }
+}

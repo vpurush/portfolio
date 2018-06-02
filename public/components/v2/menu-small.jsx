@@ -42,12 +42,23 @@ class MenuSmall extends React.Component{
                 <nav>
                     <div className="circle home-circle">
                         <Link to="/home" className="home menu-item" onClick={this.hide}>
-                            <i className="fa fa-home"></i>
+                            <i className="material-icons">
+                                home
+                            </i>
                         </Link>
                     </div>
                     <div className="circle contact-circle">
                         <Link to="/contact" className="contact menu-item" onClick={this.hide}>
-                            <i className="fa fa-envelope"></i>
+                            <i className="material-icons">
+                                mail
+                            </i>
+                        </Link>
+                    </div>
+                    <div className="circle skills-circle">
+                        <Link to="/skills" className="skills menu-item" onClick={this.hide}>
+                            <i className="material-icons">
+                                assignment
+                            </i>
                         </Link>
                     </div>
                 </nav>
