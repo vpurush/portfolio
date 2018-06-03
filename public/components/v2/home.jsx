@@ -21,7 +21,7 @@ class Home extends React.Component {
             <div className="home">
                 <div className="left-pane">
                     <span>
-                        I'm <span className="name">Vijayaraghavan</span>,
+                        I'm <span className="name">Vijay</span>,
                     </span>
                     <span>
                         a <span className="profession">web developer</span> by profession,

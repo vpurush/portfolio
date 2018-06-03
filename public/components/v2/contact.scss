@@ -25,11 +25,15 @@ div.contact{
             
             >div{
                 flex: 0 0 auto;
-            
-                i{
-                    font-size: 3em;
-                    padding: 0 1em 0 1em;
-                    color: $theme-minor;
+
+                a{
+                    text-decoration: none;
+                    
+                    i{
+                        font-size: 3em;
+                        padding: 0 1em 0 1em;
+                        color: $theme-minor;
+                    }
                 }
             }
         }

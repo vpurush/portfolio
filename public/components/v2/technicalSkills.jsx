@@ -200,13 +200,13 @@ class TechnicalSkills extends React.Component{
         //     trigger: 'hover'
         // });
 
-        elm.addEventListener("mouseenter", (e) => {
-            console.log("mouse enter");
-        })
+        // elm.addEventListener("mouseenter", (e) => {
+        //     console.log("mouse enter");
+        // })
 
-        elm.addEventListener("mouseleave", (e) => {
-            console.log("mounse leave")
-        })
+        // elm.addEventListener("mouseleave", (e) => {
+        //     console.log("mounse leave")
+        // })
     }
 
     getColor(){

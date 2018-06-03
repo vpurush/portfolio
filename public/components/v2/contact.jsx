@@ -17,25 +17,33 @@ class Contact extends React.Component {
                     <div className="group">
                         <div className="email">
                             <a href="mailto:vijayaraghavan1987@gmail.com">
-                                <i className="fa fa-envelope" />
+                            <i className="material-icons">
+                                mail
+                            </i>
                             </a>
                             {/* <span>vijayaraghavan1987@gmail.com</span> */}
                         </div>
                         <div className="social-network linked-in">
                             <a href="https://www.linkedin.com/in/vpurush/">
-                                <i className="fa fa-linkedin"></i>
+                                <i className="fab">
+                                    &#xf08c;
+                                </i>
                             </a>
                         </div>
                     </div>
                     <div className="group">
                         <div className="social-network facebook">
                             <a href="https://www.facebook.com/Vijayaraghavan.P">
-                                <i className="fa fa-facebook-square"></i>
+                                <i className="fab">
+                                    &#xf09a;
+                                </i>
                             </a>
                         </div>
                         <div className="social-network twitter">
                             <a href="https://twitter.com/vpurush">
-                                <i className="fa fa-twitter"></i>
+                                <i className="fab">
+                                    &#xf099;
+                                </i>
                             </a>
                         </div>
                     </div>
