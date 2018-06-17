@@ -26,7 +26,7 @@ class Skills extends React.Component {
                             &nbsp;
                         </p>
                         <p>
-                            I also have keen interest in creating striking user interface using CSS and HTML.
+                            I also have keen interest in creating striking user interface using CSS and HTML. In fact, every aspect of this responsive website was created entirely by me (except for the icons), including the logo and wordcloud.
                         </p>
                         <p className="gutter">
                             &nbsp;
