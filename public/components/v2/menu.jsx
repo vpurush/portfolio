@@ -38,6 +38,12 @@ class Menu extends React.Component{
                         </i>
                         <span>Skills</span>
                     </Link>
+                    <Link to="/ml" className="skills menu-item" href="#">
+                        <i className="material-icons">
+                            assignment
+                        </i>
+                        <span>Machine Learning</span>
+                    </Link>
                 </nav>
             </div>
         );

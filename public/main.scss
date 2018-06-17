@@ -36,6 +36,9 @@ input[type="submit"], button
 @import "./components/v2/contact";
 @import "./components/v2/skills";
 @import "./components/v2/technicalSkills";
+@import "./components/v2/ml";
+@import "./components/v2/tictactoe";
+
 
 @media screen and (min-width: 480px) and (max-width: 959px){
     @import "./components/v2/app-medium";

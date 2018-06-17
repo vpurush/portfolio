@@ -6,6 +6,8 @@ const MenuMedium = require("./menu-medium.jsx");
 const MenuSmall = require("./menu-small.jsx");
 const Contact = require("./contact.jsx");
 const Skills = require("./skills.jsx");
+const MachineLearning = require("./ml.jsx");
+const TicTacToe = require("./tictactoe.jsx");
 const { HashRouter, BrowserRouter, Route, Redirect, Switch } = require('react-router-dom');
 var $ = require("jquery");
 window.$ = $;
@@ -31,6 +33,8 @@ class App extends React.Component{
                             <Route path="/home" component={Home} />
                             <Route path="/contact" component={Contact} />
                             <Route path="/skills" component={Skills} />
+                            <Route path="/ml/tictactoe" component={TicTacToe} />
+                            <Route path="/ml" component={MachineLearning} />
                             <Redirect from="*" to="/home" />
                         </Switch>
                     </div>
