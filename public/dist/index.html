@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html prefix="og: http://ogp.me/ns#">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,7 +19,7 @@
     <!-- Schema.org markup for Google+ -->
     <meta itemprop="name" content="Vijayaraghavan's Portfolio">
     <meta itemprop="description" content="Vijayaraghavan is a UI developer and a machine learning enthusiast">
-    <meta itemprop="image" content="/images/custom-logo.svg">
+    <meta itemprop="image" content="https://vpurush.github.io/images/custom-logo-large.png">
 
     <!-- Twitter Card data -->
     <meta name="twitter:card" content="summary_large_image">
@@ -28,14 +28,16 @@
     <meta name="twitter:description" content="Vijayaraghavan is a UI developer and a machine learning enthusiast">
     <meta name="twitter:creator" content="@vpurush">
     <!-- Twitter summary card with large image must be at least 280x150px -->
-    <meta name="twitter:image:src" content="/images/custom-logo.svg">
+    <meta name="twitter:image:src" content="https://vpurush.github.io/images/custom-logo-large.png">
 
     <!-- Open Graph data -->
     <meta property="og:title" content="Vijayaraghavan's Portfolio" />
     <meta property="og:type" content="profile" />
-    <meta property="og:image" content="/images/custom-logo.svg" />
+    <meta property="og:url" content="https://vpurush.github.io/" />
+    <meta property="og:image" content="https://vpurush.github.io/images/custom-logo-large.png" />
     <meta property="og:description" content="Vijayaraghavan is a UI developer and a machine learning enthusiast" />
-  <link href="bundle.css" rel="stylesheet"></head>
+    <link href="bundle.css" rel="stylesheet">
+  </head>
   <body>
     <div id="root">
 
@@ -43,5 +45,7 @@
     <!-- <script async defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAtAtcTAAiBhuHjjO2qp1HKHb8gVgrhSIs&callback=initMap">
     </script> -->
-  <script type="text/javascript" src="bundle.js"></script></body>
+    <script type="text/javascript" src="vendors.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+  </body>
 </html>

@@ -7467,6 +7467,66 @@ section.skills {
     animation-duration: 3s;
     animation-iteration-count: infinite; }
 
+section.ml {
+  height: 100%;
+  display: flex;
+  flex-direction: row; }
+  section.ml .left-pane {
+    flex: 1 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; }
+  section.ml .right-pane {
+    flex: 1 0;
+    display: flex; }
+
+section.ttt {
+  height: 100%;
+  display: flex;
+  flex-direction: row; }
+  section.ttt .left-pane {
+    flex: 1 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; }
+  section.ttt .right-pane {
+    flex: 1 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; }
+    section.ttt .right-pane .game {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center; }
+      section.ttt .right-pane .game .row {
+        flex: 0 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center; }
+        section.ttt .right-pane .game .row .cell {
+          flex: 0 0 auto;
+          height: 3em;
+          width: 3em;
+          font-size: 2em;
+          border: 1px solid #23111B;
+          text-align: center;
+          line-height: 3em; }
+          section.ttt .right-pane .game .row .cell:first-child {
+            border-left: none; }
+          section.ttt .right-pane .game .row .cell:last-child {
+            border-right: none; }
+          section.ttt .right-pane .game .row .cell.cell__highlight {
+            background-color: #7D8491; }
+        section.ttt .right-pane .game .row:first-child .cell {
+          border-top: none; }
+        section.ttt .right-pane .game .row:last-child .cell {
+          border-bottom: none; }
+
 @media screen and (min-width: 480px) and (max-width: 959px) {
   .app > .left-pane {
     display: none; }
