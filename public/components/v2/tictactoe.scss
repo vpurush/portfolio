@@ -50,6 +50,10 @@ section.ttt{
 
                     text-align: center;
                     line-height: 3em;
+
+                    &.cell__highlight{
+                        background-color: #7D8491;
+                    }
                 }
 
                 &:first-child{

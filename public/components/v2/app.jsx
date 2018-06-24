@@ -12,15 +12,15 @@ const { HashRouter, BrowserRouter, Route, Redirect, Switch } = require('react-ro
 var $ = require("jquery");
 window.$ = $;
 
-class App extends React.Component{
+class App extends React.Component {
 
-    constructor(props, context){
+    constructor(props, context) {
         super(props, context);
         this.state = {
         };
     }
 
-    render(){
+    render() {
 
         return (
             <HashRouter>
@@ -45,5 +45,17 @@ class App extends React.Component{
         );
     }
 }
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+        navigator.serviceWorker.register('/sw.js').then(function (registration) {
+            // Registration was successful
+            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        }, function (err) {
+            // registration failed :(
+            console.log('ServiceWorker registration failed: ', err);
+        });
+    });
+}
+
 
 module.exports = App;

@@ -1,12 +1,13 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const webpack = require('webpack');
 
-const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
-    template: path.resolve(__dirname, './public/index.html'),
-    filename: 'index.html',
-    inject: 'body'
-});
+// const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
+//     template: path.resolve(__dirname, './public/index.html'),
+//     filename: 'index.html',
+//     inject: 'body'
+// });
 
 const extractSass = new ExtractTextPlugin({
     filename: "bundle.css",
@@ -15,10 +16,13 @@ const extractSass = new ExtractTextPlugin({
 
 
 const webpackConfig = {
-    entry: path.resolve(__dirname, './public/index.jsx'),
+    entry: {
+        app: path.resolve(__dirname, './public/index.jsx'),
+        sw: path.resolve(__dirname, './public/sw.js')
+    },
     output: {
         path: path.resolve(__dirname, './public/dist'),
-        filename: 'bundle.js'
+        filename: '[name].js'
     },
     module: {
         rules:[
@@ -92,8 +96,21 @@ const webpackConfig = {
             }
         ]
     },
-    plugins: [HtmlWebpackPluginConfig, extractSass],
-    devtool: true
+    plugins: [
+        extractSass
+    ],
+    devtool: true,
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                commons: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: 'vendors',
+                    chunks: 'all'
+                }
+            }
+        }
+    }
 };
 
 module.exports = webpackConfig;
