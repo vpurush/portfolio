@@ -1,7 +1,7 @@
 var React = require('react');
 var ReactDOM = require("react-dom");
 var $ = require("jquery");
-const MLService = require("../../services/ml-service.js");
+const TTTMLService = require("../../services/ttt-ml-service.js");
 window.$ = $;
 
 class TicTacToe extends React.Component {
@@ -16,10 +16,12 @@ class TicTacToe extends React.Component {
                 [0, 0, 0]
             ],
             disabled: false,
-            highLight: {}
+            highLight: {},
+            gameOver: false
         }
 
         this.cellClick = this.cellClick.bind(this);
+        this.restartGame = this.restartGame.bind(this);
     }
 
     cellClick(i, j){
@@ -42,14 +44,38 @@ class TicTacToe extends React.Component {
         }
     }
 
+    checkGameOver(){
+        let gameOver = true;
+        this.state.game.forEach(r => {
+            r.forEach(c => {
+                if(c == 0){
+                    gameOver = false;
+                }
+            })
+        })
+
+        this.setState({
+            gameOver: gameOver
+        });
+    }
+
     checkWinner(player){
+
+        this.checkGameOver();
         var result = this.isWin(player);
         if(result.win){
             this.highLight(result.coords);
 
             this.setState({
-                disabled: true
+                disabled: true,
+                gameOver: true
             });
+
+            if(player === -1){
+                TTTMLService.lost(this.state.game);
+            } else {
+                TTTMLService.won(this.state.game);
+            }
             return true;
         }else{
             return false;
@@ -113,21 +139,33 @@ class TicTacToe extends React.Component {
     }
 
     makeNextMove(){
-        MLService.getNextMoveInTTT(this.state.game).then((r) => {
-            let result = r.result;
-            let i = Math.floor(result/3), j = result % 3;
-            console.log("r", r, i ,j);
+        const game = TTTMLService.getNextMoveInTTT(this.state.game);
 
-            let game = Object.assign([], this.state.game);
-            game[i][j] = 1;
+        // let game = Object.assign([], this.state.game);
+        // game[i][j] = 1;
 
+        if (game) {
             this.setState({
                 game: game,
                 disabled: false
+            }, () => {
+                this.checkWinner(1);
             });
-        })
+        }
         //this.makeRandomMove();
-        this.checkWinner(1);
+    }
+
+    restartGame(){
+        this.setState({
+            game: [
+                [0, 0, 0],
+                [0, 0, 0],
+                [0, 0, 0]
+            ],
+            disabled: false,
+            highLight: {},
+            gameOver: false
+        });
     }
 
     makeRandomMove(){
@@ -189,15 +227,18 @@ class TicTacToe extends React.Component {
                 <div className="right-pane">
                     <div className="game">
                         {this.state.game.map((row, i) => {
-                            return (<div className="row">
+                            return (<div className="row" key={i}>
                                 {row.map((c, j) => {
-                                    return (<div className={this.state.highLight[i] && this.state.highLight[i][j] ? "cell cell__highlight" : "cell"} onClick={this.cellClick(i, j)}>
+                                    return (<div key={j} className={this.state.highLight[i] && this.state.highLight[i][j] ? "cell cell__highlight" : "cell"} onClick={this.cellClick(i, j)}>
                                             {this.renderChar(c)}
                                             </div>);
                                     })
                                 }
                             </div>);
                         })}
+                    </div>
+                    <div className="game-control">
+                        <button className={this.state.gameOver ? "restart-game btn btn-primary" : "restart-game btn btn-primary vhidden"} onClick={this.restartGame}>Restart Game</button>
                     </div>
                 </div>
             </section>

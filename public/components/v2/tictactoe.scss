@@ -71,5 +71,12 @@ section.ttt{
             }
             
         }
+
+        .game-control{
+            padding: 10px 0;
+        .restart-game.vhidden{
+                visibility: hidden;
+            }
+        }
     }
 }

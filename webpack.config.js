@@ -22,7 +22,7 @@ const webpackConfig = {
     },
     output: {
         path: path.resolve(__dirname, './public/dist'),
-        filename: '[name].js'
+        filename: 'bundle.js'
     },
     module: {
         rules:[
@@ -99,7 +99,11 @@ const webpackConfig = {
     plugins: [
         extractSass
     ],
-    devtool: true,
+    devtool: "source-map",
+    devServer: {
+        contentBase: "./public",
+        hot: true
+    },
     optimization: {
         splitChunks: {
             cacheGroups: {
