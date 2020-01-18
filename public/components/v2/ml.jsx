@@ -2,6 +2,7 @@ var React = require('react');
 var ReactDOM = require("react-dom");
 var $ = require("jquery");
 const { Link } = require('react-router-dom');
+const ChatBot = require('./chat-bot.jsx');
 window.$ = $;
 
 class MachineLearning extends React.Component {
@@ -21,6 +22,7 @@ class MachineLearning extends React.Component {
                 </div>
                 <div className="right-pane">
                 </div>
+                <ChatBot></ChatBot>
             </section>
         );
     }

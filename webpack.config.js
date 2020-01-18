@@ -18,11 +18,12 @@ const extractSass = new ExtractTextPlugin({
 const webpackConfig = {
     entry: {
         app: path.resolve(__dirname, './public/index.jsx'),
-        sw: path.resolve(__dirname, './public/sw.js')
+        sw: path.resolve(__dirname, './public/sw.js'),
+        // aws: path.resolve(__dirname, './public/third-party/aws/aws-sdk-2.605.0.min.js'),
     },
     output: {
         path: path.resolve(__dirname, './public/dist'),
-        filename: 'bundle.js'
+        filename: '[name]-bundle.js'
     },
     module: {
         rules:[

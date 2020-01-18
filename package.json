@@ -14,6 +14,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "aws-sdk": "^2.605.0",
     "bootstrap": "^3.3.7",
     "express": "^4.15.3",
     "font-awesome": "^4.7.0",

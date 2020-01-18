@@ -1,0 +1,92 @@
+.chat-bot{
+    .indicator{
+        height: 3em;
+        width: 3em;
+        border-radius: 1.5em;
+        box-shadow: 0px 0px 8px grey;
+        position: fixed;
+        bottom: 3em;
+        right: 3em;
+        cursor: pointer;
+
+        i{
+            left: .5em;
+            top: .5em;
+            font-size: 1.5em;
+        }
+    }
+
+    .chat-window{
+        height: 25em;
+        width: 20em;
+        position: fixed;
+        bottom: 7em;
+        right: 2em;
+        border-radius: .5em;
+        overflow: hidden;
+        box-shadow: 0px 0px 8px grey;
+        // display: flex;
+        flex-direction: column;
+
+        .header{
+            // flex: 1 0 2em;
+            height: 2em;
+            background-color: $theme-minor;
+            text-align: center;
+            color: $theme-major;
+            padding: 5px;
+        }
+
+        .message-box{
+            // flex: 8 0;
+            height: calc(100% - 4em);
+            overflow-y: scroll;
+
+            .message-item{
+                margin: 5px;
+
+                .message{
+                    color: $theme-major;
+                    background-color: $theme-minor;
+                    border-radius: 5px;
+                    padding: 6px 3px;
+                    display: inline-block;
+                    max-width: 85%;
+                    text-align: left;
+                }
+
+                &.outgoing{
+                    text-align: right;
+                }
+
+                &.incoming{
+                    text-align: left;
+                }
+
+                .who{
+                    padding: 2px;
+                    font-size: .5em;
+                    color: gray;
+                    display: block;
+                }
+            }
+        }
+
+        .message-input{
+            // flex: 1 0 2em;
+            height: 2em;
+            background-color: $theme-minor;
+            color: $theme-major;
+            padding: 5px 5px 5px 5px;
+
+            input[type="text"]{
+                outline: none;
+                border: none;
+                color: $theme-major;
+                background-color: transparent;
+                height: 100%;
+                width: 100%;
+            }
+        }
+    }
+}
