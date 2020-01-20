@@ -1,4 +1,6 @@
 .chat-bot{
+    z-index: 999;
+
     .indicator{
         height: 3em;
         width: 3em;
@@ -17,6 +19,7 @@
     }
 
     .chat-window{
+        background-color: $theme-major;
         height: 25em;
         width: 20em;
         position: fixed;

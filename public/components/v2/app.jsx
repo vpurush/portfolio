@@ -8,6 +8,7 @@ const Contact = require("./contact.jsx");
 const Skills = require("./skills.jsx");
 const MachineLearning = require("./ml.jsx");
 const TicTacToe = require("./tictactoe.jsx");
+const ChatBot = require('./chat-bot.jsx');
 const { HashRouter, BrowserRouter, Route, Redirect, Switch } = require('react-router-dom');
 var $ = require("jquery");
 window.$ = $;
@@ -25,6 +26,7 @@ class App extends React.Component {
         return (
             <HashRouter>
                 <div className="app">
+                    <ChatBot></ChatBot>
                     <div className="left-pane">
                         <Menu></Menu>
                     </div>

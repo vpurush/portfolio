@@ -24,10 +24,10 @@ class Home extends React.Component {
                         I'm <span className="name">Vijay</span>,
                     </span>
                     <span>
-                        a <span className="profession">web developer</span> by profession,
+                        an experienced <span className="profession">web developer</span>,
                     </span>
                     <span>
-                        a <span className="hobby">machine learning</span> enthusiast by hobby.
+                        a beginner at <span className="hobby">NLP and ML</span>.
                     </span>
                 </div>
                 <div className="right-pane">

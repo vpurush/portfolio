@@ -2,7 +2,6 @@ var React = require('react');
 var ReactDOM = require("react-dom");
 var $ = require("jquery");
 const { Link } = require('react-router-dom');
-const ChatBot = require('./chat-bot.jsx');
 window.$ = $;
 
 class MachineLearning extends React.Component {
@@ -16,13 +15,13 @@ class MachineLearning extends React.Component {
         return (
             <section className="ml">
                 <div className="left-pane">
-                    <Link to="/ml/tictactoe" className="home menu-item" onClick={this.hide}>
+                    <Link to="/ml/tictactoe" className="tictactoe-link" onClick={this.hide}>
+                        <img src="/images/tic-tac-toe.png" alt="tic tac toe" />
                         <h3 className="name">tic-tac-toe</h3>
                     </Link>
                 </div>
                 <div className="right-pane">
                 </div>
-                <ChatBot></ChatBot>
             </section>
         );
     }

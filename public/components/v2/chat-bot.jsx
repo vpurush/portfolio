@@ -2,8 +2,10 @@ var React = require('react');
 var ReactDOM = require("react-dom");
 var $ = require("jquery");
 var LexBotService = require("../../services/lex-bot-service");
+const Desktop = require('../../utils/responsive-decorators/desktop');
 window.$ = $;
 
+@Desktop
 class ChatBot extends React.Component {
 
     constructor(props, context) {
@@ -14,6 +16,8 @@ class ChatBot extends React.Component {
             userinput: "",
             messageList: []
         }
+
+        this.messageBox = React.createRef();
 
         this.toggleShow = this.toggleShow.bind(this);
         this.changeInput = this.changeInput.bind(this);
@@ -42,6 +46,9 @@ class ChatBot extends React.Component {
 
         this.setState({
             messageList
+        }, () => {
+            const messageBoxDiv = this.messageBox.current;
+            messageBoxDiv.scrollTop = messageBoxDiv.scrollHeight;
         });
     }
 
@@ -66,22 +73,25 @@ class ChatBot extends React.Component {
 
         return (
             <div className="chat-bot">
-                <div className="chat-window">
-                    <div className="header">
-                        <p>Vijay's digital assistant</p>
+                {this.state.visible ?
+                    <div className="chat-window">
+                        <div className="header">
+                            <p>Vijay's digital assistant</p>
+                        </div>
+                        <div className="message-box" ref={this.messageBox}>
+                            {this.state.messageList.map((m, i) => {
+                                return <div key={i} className={"message-item " + m.type}>
+                                            <span className="who">{m.type == "outgoing" ? "You": "Bot"}</span>
+                                            <span className="message">{m.message}</span>
+                                        </div>
+                            })}
+                        </div>
+                        <div className="message-input">
+                            <input type="text" placeholder="what would you like to know about me?" value={this.state.userinput} onChange={this.changeInput} onKeyPress={this.keypress} />
+                        </div>
                     </div>
-                    <div className="message-box">
-                        {this.state.messageList.map((m, i) => {
-                            return <div key={i} className={"message-item " + m.type}>
-                                        <span className="who">{m.type == "outgoing" ? "You": "Bot"}</span>
-                                        <span className="message">{m.message}</span>
-                                    </div>
-                        })}
-                    </div>
-                    <div className="message-input">
-                        <input type="text" value={this.state.userinput} onChange={this.changeInput} onKeyPress={this.keypress} />
-                    </div>
-                </div>
+                    : null
+                }
                 <div className="indicator" onClick={this.toggleShow}>
                     {this.state.visible ? 
                     <i className="glyphicon glyphicon-remove"></i> : 

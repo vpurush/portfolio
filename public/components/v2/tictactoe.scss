@@ -3,15 +3,35 @@ section.ttt{
     display: flex;
     flex-direction: row;
 
-    .left-pane{
+    .right-pane{
         flex: 1 0;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+
+        .description{
+            .game-name{
+                font-size: 2.5em;
+                color: brown;
+                display: inline-block;
+            }
+            .learning-method{
+                display: inline-block;
+                font-size: 1.5em;
+                color: cornflowerblue;
+            }
+            p{
+                padding: 10px 10px 10px 0;
+
+                em{
+                    color: greenyellow;
+                }
+            }
+        }
     }
 
-    .right-pane{
+    .left-pane{
         flex: 1 0;
         display: flex;
         flex-direction: column;

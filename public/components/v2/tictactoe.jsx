@@ -220,11 +220,6 @@ class TicTacToe extends React.Component {
         return (
             <section className="ttt">
                 <div className="left-pane">
-                    <div className="description">
-                        description goes here
-                    </div>
-                </div>
-                <div className="right-pane">
                     <div className="game">
                         {this.state.game.map((row, i) => {
                             return (<div className="row" key={i}>
@@ -239,6 +234,16 @@ class TicTacToe extends React.Component {
                     </div>
                     <div className="game-control">
                         <button className={this.state.gameOver ? "restart-game btn btn-primary" : "restart-game btn btn-primary vhidden"} onClick={this.restartGame}>Restart Game</button>
+                    </div>
+                </div>
+                <div className="right-pane">
+                    <div className="description">
+                        <h3 className="game-name">tic tac toe</h3>
+                        <h2 className="learning-method">&nbsp; using reinforcement learning</h2>
+                        <p>
+                            This learning agent has been trained using <em>reinforcement learning</em> technique, 
+                            which is to say that the learning process is based on rewards offered at the end of the game based on its outcome. 
+                        </p>
                     </div>
                 </div>
             </section>
