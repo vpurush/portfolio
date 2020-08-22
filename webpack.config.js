@@ -2,6 +2,7 @@
 const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const webpack = require('webpack');
+const CopyPlugin = require('copy-webpack-plugin');
 
 // const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 //     template: path.resolve(__dirname, './public/index.html'),
@@ -13,6 +14,12 @@ const extractSass = new ExtractTextPlugin({
     filename: "bundle.css",
     disable: process.env.NODE_ENV === "development"
 });
+
+const copyFiles = new CopyPlugin({
+    patterns: [
+        { from: path.resolve(__dirname, 'public', 'index.html'), to: path.resolve(__dirname, 'public', 'dist', 'index.html'), }
+    ]
+})
 
 
 const webpackConfig = {
@@ -26,7 +33,7 @@ const webpackConfig = {
         filename: '[name]-bundle.js'
     },
     module: {
-        rules:[
+        rules: [
             { test: /\.js$/, use: ['babel-loader'], exclude: /node_modules/ },
             { test: /\.jsx$/, use: ['babel-loader'], exclude: /node_modules/ },
             // { test: /\.scss$/, loaders: ['style-loader', 'css-loader', 'sass-loader']},
@@ -98,7 +105,8 @@ const webpackConfig = {
         ]
     },
     plugins: [
-        extractSass
+        extractSass,
+        copyFiles
     ],
     devtool: "source-map",
     devServer: {

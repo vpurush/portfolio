@@ -7,7 +7,7 @@ const MenuSmall = require("./menu-small.jsx");
 const Contact = require("./contact.jsx");
 const Skills = require("./skills.jsx");
 const MachineLearning = require("./ml.jsx");
-const TicTacToe = require("./tictactoe.jsx");
+const TicTacToe = require("./tictactoe.jsx").default;
 const ChatBot = require('./chat-bot.jsx');
 const { HashRouter, BrowserRouter, Route, Redirect, Switch } = require('react-router-dom');
 var $ = require("jquery");
@@ -46,23 +46,6 @@ class App extends React.Component {
             </HashRouter>
         );
     }
-}
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function () {
-        // navigator.serviceWorker.register('/sw.js').then(function (registration) {
-        //     // Registration was successful
-        //     console.log('ServiceWorker registration successful with scope: ', registration.scope);
-        // }, function (err) {
-        //     // registration failed :(
-        //     console.log('ServiceWorker registration failed: ', err);
-        // });
-
-        navigator.serviceWorker.getRegistrations().then((registrations) => {
-            for(let registration of registrations) {  
-                registration.unregister();
-            }
-        });
-    });
 }
 
 
